@@ -112,14 +112,14 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .transport-request-box__intro { padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); }
 .transport-request-box__intro .eyebrow { margin-bottom: var(--space-1); }
 .transport-request-box__intro h2 { margin-bottom: 0; }
-.transport-request-box form { display: grid; min-height: 0; grid-template-rows: minmax(29rem, 1fr) auto auto; }
-.request-step-content { height: clamp(29rem, 39vw, 33rem); padding-block: var(--space-4); overflow-y: auto; scrollbar-gutter: stable; }
-.request-step-content--shipment { height: auto; min-height: clamp(29rem, 39vw, 33rem); overflow: visible; scrollbar-gutter: auto; }
-.request-step-content--contact { height: auto; min-height: clamp(29rem, 39vw, 33rem); overflow: visible; scrollbar-gutter: auto; }
-.request-step-content--summary { height: auto; min-height: clamp(29rem, 39vw, 33rem); overflow: visible; scrollbar-gutter: auto; }
-.request-progress { display: grid; margin: 0; padding: var(--space-4) 0 0; border-top: 1px solid var(--color-border); grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-2); list-style: none; }
+.transport-request-box form { display: grid; min-height: 0; grid-template-rows: minmax(22rem, 1fr) auto auto; }
+.request-step-content { height: clamp(22rem, 31vw, 26rem); padding-block: var(--space-3); overflow-y: auto; scrollbar-gutter: stable; }
+.request-step-content--shipment { height: auto; min-height: clamp(22rem, 31vw, 26rem); overflow: visible; scrollbar-gutter: auto; }
+.request-step-content--contact { height: auto; min-height: clamp(22rem, 31vw, 26rem); overflow: visible; scrollbar-gutter: auto; }
+.request-step-content--summary { height: auto; min-height: clamp(22rem, 31vw, 26rem); overflow: visible; scrollbar-gutter: auto; }
+.request-progress { display: grid; margin: 0; padding: var(--space-3) 0 0; border-top: 1px solid var(--color-border); grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-2); list-style: none; }
 .request-progress li { min-width: 0; color: var(--color-text-muted); }
-.request-progress button { display: grid; width: 100%; min-height: 4.75rem; place-items: center; gap: 0.45rem; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; }
+.request-progress button { display: grid; width: 100%; min-height: 4.25rem; place-items: center; gap: 0.375rem; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; }
 .request-progress span { display: grid; width: 2.125rem; height: 2.125rem; place-items: center; border: 1px solid var(--color-border-strong); border-radius: 50%; background: var(--color-background); font-size: var(--text-sm); font-weight: 800; }
 .request-progress strong { max-width: 100%; overflow-wrap: anywhere; font-size: var(--text-sm); font-weight: 700; line-height: 1.1; text-align: center; }
 .request-progress .is-current, .request-progress .is-complete { color: var(--color-text); }

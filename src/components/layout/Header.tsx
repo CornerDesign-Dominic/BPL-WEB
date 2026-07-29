@@ -4,12 +4,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-const navigationItems = [
-  { href: "#leistungen", label: "Leistungen" },
-  { href: "#unternehmen", label: "Unternehmen" },
-  { href: "#branchen", label: "Branchen" },
-];
-
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -46,14 +40,6 @@ export function Header() {
           id="primary-navigation"
           aria-label="Hauptnavigation"
         >
-          {navigationItems.map((item) => (
-            <a href={homeLink(item.href)} key={item.href} onClick={() => setIsMenuOpen(false)}>
-              {item.label}
-            </a>
-          ))}
-          <span className="site-navigation__disabled" aria-disabled="true">
-            Karriere
-          </span>
           <a href="/kontakt" onClick={() => setIsMenuOpen(false)}>
             Kontakt
           </a>

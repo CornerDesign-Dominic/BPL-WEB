@@ -52,7 +52,7 @@ export function SummaryStep({ data, onEdit }: SummaryStepProps) {
         <SummaryGroup title="Sendung" step={3} onEdit={onEdit}><p><strong>Abholung:</strong> {pickupPeriod}<br /><strong>Packstücke:</strong> {data.packages || "–"} ({packageType})<br /><strong>Warenart:</strong> {goodsType}<br /><strong>Gewicht:</strong> {data.weightKg ? `${data.weightKg} kg` : "–"}<br /><strong>Maße pro Packstück:</strong> {data.lengthCm && data.widthCm && data.heightCm ? `${data.lengthCm} × ${data.widthCm} × ${data.heightCm} cm` : "–"}</p></SummaryGroup>
         <SummaryGroup title="Kontakt" step={4} onEdit={onEdit}><p>{contactDetails.map((detail, index) => <Fragment key={detail}>{index > 0 ? <br /> : null}{detail}</Fragment>)}</p></SummaryGroup>
       </div>
-      <p className="request-unbinding-note">Die Anfrage ist unverbindlich. Wir melden uns nach Prüfung Ihrer Angaben.</p>
+      <p className="request-unbinding-note">Wir prüfen Ihre Anfrage innerhalb unserer Geschäftszeiten und melden uns in der Regel innerhalb einer Stunde bei Ihnen. In dringenden Fällen erreichen Sie uns direkt unter <a href="tel:+4920226155771">+49 202 26155-771</a>.</p>
     </div>
   );
 }

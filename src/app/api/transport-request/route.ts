@@ -83,14 +83,14 @@ export async function POST(request: Request) {
 
   if (mailConfigured) {
     return NextResponse.json(
-      { message: "Die Mail-Infrastruktur muss vor dem Versand noch technisch integriert werden." },
+      { message: "Ihre Anfrage konnte derzeit nicht übermittelt werden. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt." },
       { status: 501 },
     );
   }
 
   // Die Mail-Infrastruktur wird bewusst erst nach Konfiguration eines Anbieters aktiviert.
   return NextResponse.json(
-    { message: "Der E-Mail-Versand ist noch nicht konfiguriert. Ihre Anfrage wurde nicht übermittelt." },
+    { message: "Ihre Anfrage konnte derzeit nicht übermittelt werden. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt." },
     { status: 503 },
   );
 }
