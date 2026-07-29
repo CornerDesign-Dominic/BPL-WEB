@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Button } from "@/components/ui/Button";
 
 const navigationItems = [
   { href: "#leistungen", label: "Leistungen" },
@@ -62,9 +61,6 @@ export function Header() {
             Anfrage starten
           </a>
         </nav>
-        <Button className="site-header__cta" href={homeLink("#transportanfrage")}>
-          Anfrage starten
-        </Button>
       </div>
     </header>
   );

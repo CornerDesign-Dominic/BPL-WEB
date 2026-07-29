@@ -91,7 +91,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .site-header__cta { min-height: 2.625rem; padding-inline: 1rem; }
 
 .hero { border-bottom: 1px solid var(--color-border); background: var(--color-background); }
-.hero__content { display: flex; min-height: clamp(22rem, 43vh, 29rem); flex-direction: column; align-items: flex-start; justify-content: center; padding-block: var(--space-6); }
+.hero__content { display: flex; min-height: clamp(18rem, 35vh, 23rem); flex-direction: column; align-items: flex-start; justify-content: center; padding-block: var(--space-5); }
 .eyebrow { margin-bottom: var(--space-2); color: var(--color-primary-dark); font-size: var(--text-xs); font-weight: 800; letter-spacing: 0.125em; line-height: 1.2; text-transform: uppercase; }
 .eyebrow--light { color: var(--color-primary-light); }
 h1, h2, h3, h4 { color: var(--color-text); font-weight: 700; letter-spacing: -0.026em; }
@@ -118,6 +118,7 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .request-step-content { height: clamp(29rem, 39vw, 33rem); padding-block: var(--space-4); overflow-y: auto; scrollbar-gutter: stable; }
 .request-step-content--shipment { height: auto; min-height: clamp(29rem, 39vw, 33rem); overflow: visible; scrollbar-gutter: auto; }
 .request-step-content--contact { height: auto; min-height: clamp(29rem, 39vw, 33rem); overflow: visible; scrollbar-gutter: auto; }
+.request-step-content--summary { height: auto; min-height: clamp(29rem, 39vw, 33rem); overflow: visible; scrollbar-gutter: auto; }
 .request-progress { display: grid; margin: 0; padding: var(--space-4) 0 0; border-top: 1px solid var(--color-border); grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-2); list-style: none; }
 .request-progress li { min-width: 0; color: var(--color-text-muted); }
 .request-progress button { display: grid; width: 100%; min-height: 4.75rem; place-items: center; gap: 0.45rem; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; }
@@ -177,6 +178,12 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .summary-group h4 { font-size: var(--text-sm); font-weight: 800; }
 .summary-group p { color: var(--color-text-muted); font-size: var(--text-sm); }
 .summary-group button { padding: 0; border: 0; color: var(--color-primary-dark); background: transparent; cursor: pointer; font: inherit; font-size: var(--text-sm); font-weight: 700; text-decoration: underline; text-underline-offset: 0.2em; }
+.request-step--summary .request-step__heading p { margin-bottom: var(--space-3); }
+.summary-grid--compact { gap: var(--space-2); }
+.summary-grid--compact .summary-group { padding: var(--space-2) var(--space-3); }
+.summary-grid--compact .summary-group__heading { margin-bottom: var(--space-1); }
+.summary-grid--compact .summary-group p { overflow-wrap: anywhere; font-size: 0.8125rem; line-height: 1.4; }
+.summary-grid--compact .summary-group__edit { flex: 0 0 auto; font-size: var(--text-xs); }
 .request-unbinding-note { margin: var(--space-4) 0 0; color: var(--color-text-muted); font-size: var(--text-sm); }
 .request-status { display: grid; gap: var(--space-1); margin-top: var(--space-3); font-size: var(--text-sm); }
 .request-status--success { color: #17663a; font-weight: 600; }
@@ -277,6 +284,7 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
   .request-step-content { height: min(33rem, 56vh); min-height: 25rem; padding-block: var(--space-3); }
   .request-step-content--shipment { height: auto; min-height: 25rem; }
   .request-step-content--contact { height: auto; min-height: 25rem; }
+  .request-step-content--summary { height: auto; min-height: 25rem; }
   .transport-type-grid, .route-grid, .request-form-grid, .shipment-form-grid, .shipment-time-grid, .shipment-dimensions, .summary-grid, .company-points, .industry-grid, .contact-details, .site-footer__inner { grid-template-columns: 1fr; }
   .transport-type-card { min-height: 6.5rem; padding: var(--space-2); }
   .request-form-grid--full label:first-child { grid-column: auto; }
