@@ -1,0 +1,141 @@
+"use client";
+
+import { useState } from "react";
+import { ContactStep } from "./ContactStep";
+import { RouteStep } from "./RouteStep";
+import { ShipmentStep } from "./ShipmentStep";
+import { SummaryStep } from "./SummaryStep";
+import { TransportRequestProgress } from "./TransportRequestProgress";
+import { TransportTypeStep } from "./TransportTypeStep";
+import type { FieldErrors, TransportRequestData, UpdateTransportRequestField } from "./types";
+
+const initialData: TransportRequestData = {
+  transportType: "",
+  pickupCountry: "Deutschland",
+  pickupPostalCode: "",
+  pickupCity: "",
+  deliveryCountry: "Deutschland",
+  deliveryPostalCode: "",
+  deliveryCity: "",
+  pickupDate: "",
+  pickupTime: "",
+  packages: "",
+  weightKg: "",
+  goodsDescription: "",
+  dimensions: "",
+  specialNotes: "",
+  company: "",
+  contactPerson: "",
+  email: "",
+  phone: "",
+  customerNumber: "",
+  message: "",
+  privacyAccepted: false,
+  website: "",
+};
+
+function validateStep(step: number, data: TransportRequestData): FieldErrors {
+  const errors: FieldErrors = {};
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (step === 1 && !data.transportType) errors.transportType = "Bitte wählen Sie eine Transportart.";
+  if (step === 2) {
+    if (!data.pickupCountry) errors.pickupCountry = "Bitte wählen Sie das Abholland.";
+    if (!/^\d{5}$/.test(data.pickupPostalCode)) errors.pickupPostalCode = "Bitte geben Sie eine fünfstellige Abhol-PLZ an.";
+    if (!data.pickupCity.trim()) errors.pickupCity = "Bitte geben Sie den Abholort an.";
+    if (!data.deliveryCountry) errors.deliveryCountry = "Bitte wählen Sie das Zustellland.";
+    if (!/^\d{5}$/.test(data.deliveryPostalCode)) errors.deliveryPostalCode = "Bitte geben Sie eine fünfstellige Zustell-PLZ an.";
+    if (!data.deliveryCity.trim()) errors.deliveryCity = "Bitte geben Sie den Zustellort an.";
+  }
+  if (step === 3) {
+    if (!data.pickupDate) errors.pickupDate = "Bitte geben Sie ein Abholdatum an.";
+    if (!data.packages || Number(data.packages) < 1) errors.packages = "Bitte geben Sie die Anzahl der Packstücke an.";
+    if (!data.weightKg || Number(data.weightKg) <= 0) errors.weightKg = "Bitte geben Sie ein Gesamtgewicht an.";
+    if (data.transportType === "special" && !data.specialNotes.trim()) errors.specialNotes = "Bitte beschreiben Sie die Besonderheiten.";
+  }
+  if (step === 4) {
+    if (!data.company.trim()) errors.company = "Bitte geben Sie den Firmennamen an.";
+    if (!data.contactPerson.trim()) errors.contactPerson = "Bitte geben Sie einen Ansprechpartner an.";
+    if (!emailPattern.test(data.email)) errors.email = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
+    if (!data.phone.trim()) errors.phone = "Bitte geben Sie eine Telefonnummer an.";
+    if (!data.privacyAccepted) errors.privacyAccepted = "Bitte bestätigen Sie die Datenschutzhinweise.";
+  }
+
+  return errors;
+}
+
+export function TransportRequestForm() {
+  const [data, setData] = useState(initialData);
+  const [step, setStep] = useState(1);
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [statusMessage, setStatusMessage] = useState("");
+
+  const updateField: UpdateTransportRequestField = (field, value) => {
+    setData((current) => ({ ...current, [field]: value }));
+    setErrors((current) => ({ ...current, [field]: undefined }));
+  };
+
+  const goNext = () => {
+    const stepErrors = validateStep(step, data);
+    setErrors(stepErrors);
+    if (Object.keys(stepErrors).length === 0) setStep((current) => Math.min(current + 1, 5));
+  };
+
+  const submit = async () => {
+    const stepErrors = validateStep(4, data);
+    setErrors(stepErrors);
+    if (Object.keys(stepErrors).length > 0) {
+      setStep(4);
+      return;
+    }
+
+    setStatus("submitting");
+    setStatusMessage("");
+    try {
+      const response = await fetch("/api/transport-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const result = (await response.json()) as { message?: string };
+
+      if (!response.ok) throw new Error(result.message ?? "Die Anfrage konnte nicht übermittelt werden.");
+      setStatus("success");
+      setStatusMessage("Vielen Dank. Ihre Transportanfrage wurde übermittelt. Wir melden uns nach Prüfung Ihrer Angaben.");
+    } catch (error) {
+      setStatus("error");
+      setStatusMessage(error instanceof Error ? error.message : "Die Anfrage konnte nicht übermittelt werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.");
+    }
+  };
+
+  const submitLabel = status === "submitting" ? "Anfrage wird übermittelt …" : "Transportanfrage absenden";
+
+  return (
+    <section className="transport-request-section" id="transportanfrage" aria-labelledby="transport-request-title">
+      <div className="page-container transport-request-box">
+        <div className="transport-request-box__intro">
+          <h2 id="transport-request-title">Transport anfragen</h2>
+        </div>
+        <form noValidate onSubmit={(event) => { event.preventDefault(); if (step === 5) void submit(); }}>
+          <div className="request-step-content">
+            {step === 1 ? <TransportTypeStep data={data} errors={errors} onChange={updateField} /> : null}
+            {step === 2 ? <RouteStep data={data} errors={errors} onChange={updateField} /> : null}
+            {step === 3 ? <ShipmentStep data={data} errors={errors} onChange={updateField} /> : null}
+            {step === 4 ? <ContactStep data={data} errors={errors} onChange={updateField} /> : null}
+            {step === 5 ? <SummaryStep data={data} onEdit={setStep} /> : null}
+          </div>
+          <div className="request-actions">
+            {step > 1 ? <button className="button button--secondary" type="button" onClick={() => setStep((current) => current - 1)}>Zurück</button> : <span aria-hidden="true" />}
+            {step < 5 ? <button className="button button--primary" type="button" disabled={step === 1 && !data.transportType} onClick={goNext}>Weiter</button> : <button className="button button--primary" type="submit" disabled={status === "submitting"}>{submitLabel}</button>}
+          </div>
+          <TransportRequestProgress currentStep={step} />
+        </form>
+        <div className={`request-status request-status--${status}`} aria-live="polite">
+          {statusMessage}
+          {status === "error" ? <span>Direkt erreichbar: <a href="tel:+4920226155771">+49 202 26155-771</a> · <a href="mailto:express@brennpunkt-logistik.de">express@brennpunkt-logistik.de</a></span> : null}
+        </div>
+      </div>
+    </section>
+  );
+}
