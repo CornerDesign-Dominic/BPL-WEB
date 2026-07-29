@@ -29,6 +29,10 @@ export default function KontaktPage() {
               <h2 id="contact-address-title">Adresse</h2>
               <address>Reinshagenstraße 1<br />42369 Wuppertal</address>
             </section>
+            <section className="contact-page__group" aria-labelledby="contact-hours-title">
+              <h2 id="contact-hours-title">Öffnungszeiten</h2>
+              <p>Montag bis Freitag: 08:00–17:00 Uhr</p>
+            </section>
           </div>
         </div>
       </main>
