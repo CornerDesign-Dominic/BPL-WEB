@@ -54,7 +54,7 @@ export function Header() {
           <span className="site-navigation__disabled" aria-disabled="true">
             Karriere
           </span>
-          <a href={homeLink("#kontakt")} onClick={() => setIsMenuOpen(false)}>
+          <a href="/kontakt" onClick={() => setIsMenuOpen(false)}>
             Kontakt
           </a>
           <a className="site-navigation__request" href={homeLink("#transportanfrage")} onClick={() => setIsMenuOpen(false)}>

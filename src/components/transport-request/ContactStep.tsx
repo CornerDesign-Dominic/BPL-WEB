@@ -6,10 +6,6 @@ type ContactStepProps = {
   onChange: UpdateTransportRequestField;
 };
 
-function FieldError({ message }: { message?: string }) {
-  return message ? <p className="field-error" role="alert">{message}</p> : null;
-}
-
 export function ContactStep({ data, errors, onChange }: ContactStepProps) {
   return (
     <div className="request-step">
@@ -23,9 +19,7 @@ export function ContactStep({ data, errors, onChange }: ContactStepProps) {
         <label>Telefonnummer (optional)<input type="tel" value={data.phone} onChange={(event) => onChange("phone", event.target.value)} autoComplete="tel" /></label>
         <label className="request-form-grid__full">Nachricht (optional)<textarea value={data.message} onChange={(event) => onChange("message", event.target.value)} rows={3} /></label>
       </div>
-      <FieldError message={errors.email} />
       <label className="privacy-check"><input type="checkbox" checked={data.privacyAccepted} onChange={(event) => onChange("privacyAccepted", event.target.checked)} /> <span>Ich habe die Datenschutzhinweise und die AGB gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage einverstanden.</span></label>
-      <FieldError message={errors.privacyAccepted} />
       <label className="honeypot" aria-hidden="true">Website<input tabIndex={-1} autoComplete="off" value={data.website} onChange={(event) => onChange("website", event.target.value)} /></label>
     </div>
   );

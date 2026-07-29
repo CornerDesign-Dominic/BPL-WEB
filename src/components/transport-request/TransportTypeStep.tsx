@@ -1,19 +1,18 @@
-import { transportTypeOptions, type FieldErrors, type TransportRequestData, type UpdateTransportRequestField } from "./types";
+import { transportTypeOptions, type TransportRequestData, type UpdateTransportRequestField } from "./types";
 
 type TransportTypeStepProps = {
   data: TransportRequestData;
-  errors: FieldErrors;
   onChange: UpdateTransportRequestField;
 };
 
-export function TransportTypeStep({ data, errors, onChange }: TransportTypeStepProps) {
+export function TransportTypeStep({ data, onChange }: TransportTypeStepProps) {
   return (
     <fieldset className="request-fieldset">
       <legend>Fahrzeug wählen</legend>
       <p className="request-step__intro">
         Wählen Sie die passende Option für Ihre Anfrage.
       </p>
-      <div className="transport-type-grid" role="radiogroup" aria-describedby={errors.transportType ? "transport-type-error" : undefined}>
+      <div className="transport-type-grid" role="radiogroup">
         {transportTypeOptions.map((option) => {
           const isSelected = data.transportType === option.value;
 
@@ -36,7 +35,6 @@ export function TransportTypeStep({ data, errors, onChange }: TransportTypeStepP
           );
         })}
       </div>
-      {errors.transportType ? <p className="field-error" id="transport-type-error" role="alert">{errors.transportType}</p> : null}
     </fieldset>
   );
 }

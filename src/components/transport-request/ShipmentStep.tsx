@@ -6,15 +6,7 @@ type ShipmentStepProps = {
   onChange: UpdateTransportRequestField;
 };
 
-function FieldError({ message }: { message?: string }) {
-  return message ? <p className="field-error" role="alert">{message}</p> : null;
-}
-
 export function ShipmentStep({ data, errors, onChange }: ShipmentStepProps) {
-  const timeError = errors.pickupDate || errors.pickupTime || errors.pickupEndDate || errors.pickupEndTime;
-  const shipmentError = errors.packages || errors.packageType || errors.goodsType || errors.weightKg;
-  const dimensionsError = errors.lengthCm || errors.widthCm || errors.heightCm;
-
   return (
     <div className="request-step request-step--shipment">
       <div className="request-step__heading">
@@ -38,9 +30,6 @@ export function ShipmentStep({ data, errors, onChange }: ShipmentStepProps) {
           <label>Höhe in cm<input type="number" min="1" inputMode="decimal" value={data.heightCm} onChange={(event) => onChange("heightCm", event.target.value)} aria-invalid={Boolean(errors.heightCm)} /></label>
         </div>
       </div>
-      <FieldError message={timeError} />
-      <FieldError message={shipmentError} />
-      <FieldError message={dimensionsError} />
     </div>
   );
 }

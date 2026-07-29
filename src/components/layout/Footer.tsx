@@ -22,6 +22,7 @@ export function Footer() {
           <div className="site-footer__legal">
             <p className="site-footer__claim">permanent · konsequent · effizient</p>
             <div className="site-footer__nav" aria-label="Rechtliche Hinweise">
+              <Link href="/kontakt">Kontakt</Link>
               <Link href="/impressum">Impressum</Link>
               <Link href="/datenschutz">Datenschutz</Link>
               <Link href="/agb">AGB</Link>

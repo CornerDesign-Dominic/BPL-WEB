@@ -133,7 +133,7 @@ export function TransportRequestForm() {
         </div>
         <form noValidate onSubmit={(event) => { event.preventDefault(); if (step === 5) void submit(); }}>
           <div className={`request-step-content ${step === 3 ? "request-step-content--shipment" : step === 4 ? "request-step-content--contact" : step === 5 ? "request-step-content--summary" : ""}`}>
-            {step === 1 ? <TransportTypeStep data={data} errors={errors} onChange={updateField} /> : null}
+            {step === 1 ? <TransportTypeStep data={data} onChange={updateField} /> : null}
             {step === 2 ? <RouteStep data={data} errors={errors} onChange={updateField} /> : null}
             {step === 3 ? <ShipmentStep data={data} errors={errors} onChange={updateField} /> : null}
             {step === 4 ? <ContactStep data={data} errors={errors} onChange={updateField} /> : null}

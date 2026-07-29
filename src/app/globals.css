@@ -93,14 +93,12 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .hero { border-bottom: 1px solid var(--color-border); background: var(--color-background); }
 .hero__content { display: flex; min-height: clamp(18rem, 35vh, 23rem); flex-direction: column; align-items: flex-start; justify-content: center; padding-block: var(--space-5); }
 .eyebrow { margin-bottom: var(--space-2); color: var(--color-primary-dark); font-size: var(--text-xs); font-weight: 800; letter-spacing: 0.125em; line-height: 1.2; text-transform: uppercase; }
-.eyebrow--light { color: var(--color-primary-light); }
 h1, h2, h3, h4 { color: var(--color-text); font-weight: 700; letter-spacing: -0.026em; }
 h1 { max-width: 18ch; margin-bottom: 0.2rem; font-size: clamp(2.6rem, 5.2vw, 4.65rem); letter-spacing: -0.04em; line-height: 1.02; }
 h2 { max-width: 23ch; margin-bottom: var(--space-3); font-size: var(--text-xl); line-height: var(--line-height-heading); }
 h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .hero__subheadline { margin: 0 0 var(--space-3); color: var(--color-primary-dark); font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 600; }
 .hero__intro { max-width: 43rem; margin-bottom: var(--space-4); color: var(--color-text-muted); font-size: var(--text-lg); }
-.hero__actions, .contact-cta__actions { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 
 .button { display: inline-flex; min-height: 3rem; align-items: center; justify-content: center; padding: 0.75rem 1.125rem; border: 1px solid transparent; border-radius: var(--radius-small); font-size: var(--text-sm); font-weight: 700; transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast); }
 .button--primary { color: var(--color-background); background: var(--color-primary); }
@@ -166,7 +164,6 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .postal-code-autocomplete__list { position: absolute; z-index: 2; right: 0; left: 0; margin: 0.25rem 0 0; padding: 0.25rem; border: 1px solid var(--color-border); border-radius: var(--radius-small); background: var(--color-background); list-style: none; }
 .postal-code-autocomplete__list button { width: 100%; padding: 0.5rem; border: 0; background: transparent; cursor: pointer; text-align: left; }
 .postal-code-autocomplete__list button:hover { background: var(--color-surface); }
-.field-error { margin: var(--space-1) 0 0; color: #b42318; font-size: var(--text-sm); font-weight: 600; }
 .privacy-check { display: flex; align-items: flex-start; gap: var(--space-2); margin-top: var(--space-4); color: var(--color-text-muted); font-size: var(--text-sm); }
 .privacy-check input { width: 1.125rem; height: 1.125rem; flex: 0 0 auto; margin-top: 0.1875rem; accent-color: var(--color-primary); }
 .honeypot, .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -216,18 +213,6 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .industry-card { min-height: 11rem; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-small); background: var(--color-background); }
 .industry-card p { margin-bottom: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
 
-.contact-cta { padding-block: var(--space-10); color: var(--color-background); background: var(--color-primary-dark); scroll-margin-top: var(--header-height); }
-.contact-cta h2 { margin-bottom: 0; color: var(--color-background); }
-.contact-cta__inner { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(17rem, 1.1fr); align-items: start; gap: var(--space-8); }
-.contact-cta__content > p { max-width: 39rem; margin-bottom: var(--space-4); color: var(--color-primary-light); }
-.contact-cta .button--secondary { color: var(--color-primary-dark); border-color: var(--color-background); background: var(--color-background); }
-.contact-cta .button--secondary:hover { color: var(--color-background); background: transparent; }
-.contact-details { display: grid; margin-top: var(--space-5); padding-top: var(--space-4); border-top: 1px solid rgb(255 255 255 / 35%); grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
-.contact-details div { display: grid; gap: 0.125rem; }
-.contact-details span { margin-bottom: var(--space-1); color: var(--color-primary-light); font-size: var(--text-xs); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
-.contact-details a { font-size: var(--text-sm); font-weight: 700; }
-.contact-details a:hover { text-decoration: underline; }
-
 .site-footer { overflow: hidden; border-top: 1px solid var(--color-border); background: var(--color-background); }
 .site-footer__skyline { height: clamp(4.5rem, 16vw, 13rem); pointer-events: none; background-image: url("/images/branding/wuppertal-skyline.jpg"); background-repeat: no-repeat; background-position: center bottom; background-size: 100% auto; }
 .site-footer__bar { background: #000000; }
@@ -242,6 +227,12 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .legal-page { min-height: calc(100vh - var(--header-height)); padding-block: var(--space-12); }
 .legal-page h1 { margin-bottom: var(--space-3); }
 .legal-page p { max-width: 42rem; color: var(--color-text-muted); }
+.contact-page__details { display: grid; margin-top: var(--space-5); grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); }
+.contact-page__group { display: grid; align-content: start; gap: 0.25rem; min-height: 11rem; padding: var(--space-4); border: 1px solid var(--color-border); }
+.contact-page__group h2 { margin-bottom: var(--space-2); font-size: 1.25rem; }
+.contact-page__group p { margin: 0; }
+.contact-page__group a { color: var(--color-primary-dark); font-weight: 700; }
+.contact-page__group a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 .text-link { display: inline-flex; color: var(--color-primary-dark); font-size: var(--text-sm); font-weight: 700; text-decoration: underline; text-underline-offset: 0.2em; }
 
 @media (max-width: 68rem) {
@@ -261,7 +252,7 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
   .site-navigation a, .site-navigation__disabled { font-size: 1rem; }
   .site-navigation__request { display: inline-flex; min-height: 2.875rem; align-items: center; padding: 0.625rem 0.875rem; color: var(--color-background) !important; background: var(--color-primary); }
   .site-navigation__request:hover { color: var(--color-background) !important; background: var(--color-primary-dark); }
-  .company-layout, .contact-cta__inner { grid-template-columns: 1fr; }
+  .company-layout { grid-template-columns: 1fr; }
   .company-layout { gap: var(--space-3); }
   .company-layout__index { grid-template-columns: auto auto auto; align-items: baseline; justify-content: start; gap: var(--space-2); }
   .company-layout__index strong { font-size: 3.5rem; }
@@ -276,8 +267,6 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 @media (max-width: 38rem) {
   .page-container, .site-header__inner, .site-footer__inner { width: min(100% - 2rem, var(--content-width)); }
   .hero__content { min-height: 0; padding-block: var(--space-8); }
-  .hero__actions, .contact-cta__actions { width: 100%; }
-  .hero__actions .button, .contact-cta__actions .button { width: 100%; }
   .transport-request-section { padding-block: var(--space-4) var(--space-8); }
   .transport-request-box { padding: var(--space-3); }
   .transport-request-box form { grid-template-rows: minmax(28rem, 1fr) auto auto; }
@@ -285,7 +274,7 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
   .request-step-content--shipment { height: auto; min-height: 25rem; }
   .request-step-content--contact { height: auto; min-height: 25rem; }
   .request-step-content--summary { height: auto; min-height: 25rem; }
-  .transport-type-grid, .route-grid, .request-form-grid, .shipment-form-grid, .shipment-time-grid, .shipment-dimensions, .summary-grid, .company-points, .industry-grid, .contact-details, .site-footer__inner { grid-template-columns: 1fr; }
+  .transport-type-grid, .route-grid, .request-form-grid, .shipment-form-grid, .shipment-time-grid, .shipment-dimensions, .summary-grid, .company-points, .industry-grid, .contact-page__details, .site-footer__inner { grid-template-columns: 1fr; }
   .transport-type-card { min-height: 6.5rem; padding: var(--space-2); }
   .request-form-grid--full label:first-child { grid-column: auto; }
   .request-form-grid__full { grid-column: auto; }
