@@ -210,7 +210,7 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .company-points li::before { display: inline-block; width: 0.45rem; height: 0.45rem; margin-right: var(--space-1); border-radius: 50%; background: var(--color-primary); content: ""; }
 
 .site-footer { overflow: hidden; border-top: 1px solid var(--color-border); background: var(--color-background); }
-.site-footer__skyline { height: clamp(4.5rem, 16vw, 13rem); pointer-events: none; background-image: url("/images/branding/wuppertal-skyline.jpg"); background-repeat: no-repeat; background-position: center bottom; background-size: 100% auto; }
+.site-footer__skyline { height: clamp(4.5rem, 18vw, 16rem); pointer-events: none; background-image: url("/images/branding/wuppertal-skyline.jpg"); background-repeat: no-repeat; background-position: center bottom; background-size: contain; }
 .site-footer__bar { background: #000000; }
 .site-footer__inner { display: grid; width: min(100% - 3rem, var(--content-width)); min-height: 10rem; margin-inline: auto; padding-block: var(--space-4); grid-template-columns: 1fr 1fr 1fr; gap: var(--space-4); align-items: center; }
 .site-footer__brand, .site-footer__claim { margin-bottom: var(--space-1); color: var(--color-background); font-size: var(--text-sm); font-weight: 700; }
