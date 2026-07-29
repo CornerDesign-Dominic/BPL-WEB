@@ -7,7 +7,7 @@ export function ServicesOverview() {
       <Container>
         <div className="service-focus__intro">
           <p className="eyebrow">Unser Anspruch</p>
-          <h2 id="services-title">Schnell von A nach B. Ohne Umwege. Ohne Zeitverlust.</h2>
+          <h2 id="services-title"><span>Schnell von A nach B</span><span>Ohne Umwege. Ohne Zeitverlust</span></h2>
           <p>
             Ihre Transportanforderung steht bei uns im Mittelpunkt. Wir organisieren
             zeitkritische Sendungen so direkt und effizient wie möglich – mit klaren
