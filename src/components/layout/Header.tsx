@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 
@@ -12,11 +13,14 @@ const navigationItems = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const homePrefix = pathname === "/" ? "" : "/";
+  const homeLink = (hash: string) => `${homePrefix}${hash}`;
 
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <a className="site-brand" href="#inhalt" aria-label="Zur Startseite">
+        <a className="site-brand" href={homeLink("#inhalt")} aria-label="Zur Startseite">
           <span className="site-brand__mark" aria-hidden="true">
             <Image
               src="/images/branding/logo-eye.jpg"
@@ -44,22 +48,22 @@ export function Header() {
           aria-label="Hauptnavigation"
         >
           {navigationItems.map((item) => (
-            <a href={item.href} key={item.href} onClick={() => setIsMenuOpen(false)}>
+            <a href={homeLink(item.href)} key={item.href} onClick={() => setIsMenuOpen(false)}>
               {item.label}
             </a>
           ))}
           <span className="site-navigation__disabled" aria-disabled="true">
             Karriere
           </span>
-          <a href="#kontakt" onClick={() => setIsMenuOpen(false)}>
+          <a href={homeLink("#kontakt")} onClick={() => setIsMenuOpen(false)}>
             Kontakt
           </a>
-          <Button className="site-navigation__mobile-cta" href="#transportanfrage">
-            Transport anfragen
-          </Button>
+          <a className="site-navigation__request" href={homeLink("#transportanfrage")} onClick={() => setIsMenuOpen(false)}>
+            Anfrage starten
+          </a>
         </nav>
-        <Button className="site-header__cta" href="#transportanfrage">
-          Transport anfragen
+        <Button className="site-header__cta" href={homeLink("#transportanfrage")}>
+          Anfrage starten
         </Button>
       </div>
     </header>

@@ -4,25 +4,25 @@ import { Section } from "@/components/ui/Section";
 const industries = [
   {
     title: "Industrie",
-    text: "Transportorganisation für Anforderungen aus industriellen Liefer- und Produktionsabläufen.",
+    text: "Zeitkritische Versorgung für Produktion, Instandhaltung und abgestimmte Lieferfenster.",
   },
   {
     title: "Handel",
-    text: "Transportlösungen für Warenbewegungen im Handel und entlang abgestimmter Lieferketten.",
+    text: "Verlässliche Warenbewegungen für Filialen, Lager und eng getaktete Lieferketten.",
   },
   {
-    title: "Lebensmittelbranche",
-    text: "Transportorganisation für Anforderungen aus der Lebensmittelbranche.",
+    title: "Lebensmittelwirtschaft",
+    text: "Passende Disposition für sensible Warenströme und verbindliche Zustelltermine.",
   },
 ];
 
 export function Industries() {
   return (
-    <Section className="section--surface" id="branchen" aria-labelledby="industries-title">
+    <Section className="section--surface section--after-request" id="branchen" aria-labelledby="industries-title">
       <Container>
         <div className="section-heading">
           <p className="eyebrow">Branchen</p>
-          <h2 id="industries-title">Lösungen für unterschiedliche Branchen</h2>
+          <h2 id="industries-title">Für Branchen mit verbindlichen Zeitfenstern</h2>
         </div>
         <div className="industry-grid">
           {industries.map((industry) => (

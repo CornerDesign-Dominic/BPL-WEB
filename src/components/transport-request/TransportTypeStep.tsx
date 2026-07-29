@@ -9,7 +9,7 @@ type TransportTypeStepProps = {
 export function TransportTypeStep({ data, errors, onChange }: TransportTypeStepProps) {
   return (
     <fieldset className="request-fieldset">
-      <legend>Fahrzeug- oder Transportart wählen</legend>
+      <legend>Fahrzeug wählen</legend>
       <p className="request-step__intro">
         Wählen Sie die passende Option für Ihre Anfrage.
       </p>
@@ -28,6 +28,7 @@ export function TransportTypeStep({ data, errors, onChange }: TransportTypeStepP
                 onChange={() => onChange("transportType", option.value)}
               />
               <span className="transport-type-card__content">
+                <span className="transport-type-card__radio" aria-hidden="true" />
                 <strong>{option.label}</strong>
                 <span>{option.description}</span>
               </span>

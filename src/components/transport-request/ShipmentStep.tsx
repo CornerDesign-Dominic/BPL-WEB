@@ -1,4 +1,4 @@
-import type { FieldErrors, TransportRequestData, UpdateTransportRequestField } from "./types";
+import { goodsTypeOptions, packageTypeOptions, type FieldErrors, type TransportRequestData, type UpdateTransportRequestField } from "./types";
 
 type ShipmentStepProps = {
   data: TransportRequestData;
@@ -11,27 +11,36 @@ function FieldError({ message }: { message?: string }) {
 }
 
 export function ShipmentStep({ data, errors, onChange }: ShipmentStepProps) {
-  const specialLabel = data.transportType === "special" ? "Besonderheiten *" : "Besonderheiten";
+  const timeError = errors.pickupDate || errors.pickupTime || errors.pickupEndDate || errors.pickupEndTime;
+  const shipmentError = errors.packages || errors.packageType || errors.goodsType || errors.weightKg;
+  const dimensionsError = errors.lengthCm || errors.widthCm || errors.heightCm;
 
   return (
-    <div className="request-step">
+    <div className="request-step request-step--shipment">
       <div className="request-step__heading">
-        <h3>Sendung und Termin</h3>
-        <p>Diese Angaben helfen uns, Ihre Anfrage passend einzuordnen.</p>
+        <h3>Sendung</h3>
       </div>
-      <div className="request-form-grid">
-        <label>Gewünschtes Abholdatum<input type="date" value={data.pickupDate} onChange={(event) => onChange("pickupDate", event.target.value)} aria-invalid={Boolean(errors.pickupDate)} /></label>
-        <label>Abholzeit oder Zeitfenster<input value={data.pickupTime} onChange={(event) => onChange("pickupTime", event.target.value)} placeholder="z. B. 09:00–12:00 Uhr" /></label>
+      <div className="shipment-form-grid">
+        <div className="shipment-time-grid">
+          <label>Abholtermin von: Datum<input type="date" value={data.pickupDate} onChange={(event) => onChange("pickupDate", event.target.value)} aria-invalid={Boolean(errors.pickupDate)} /></label>
+          <label>Abholtermin von: Uhrzeit<input type="time" value={data.pickupTime} onChange={(event) => onChange("pickupTime", event.target.value)} aria-invalid={Boolean(errors.pickupTime)} /></label>
+          {!data.isFixedPickup ? <label>Abholtermin bis: Datum<input type="date" value={data.pickupEndDate} onChange={(event) => onChange("pickupEndDate", event.target.value)} aria-invalid={Boolean(errors.pickupEndDate)} /></label> : null}
+          {!data.isFixedPickup ? <label>Abholtermin bis: Uhrzeit<input type="time" value={data.pickupEndTime} onChange={(event) => onChange("pickupEndTime", event.target.value)} aria-invalid={Boolean(errors.pickupEndTime)} /></label> : null}
+          <label className="shipment-fix-check"><input type="checkbox" checked={data.isFixedPickup} onChange={(event) => onChange("isFixedPickup", event.target.checked)} /> Fixtermin</label>
+        </div>
         <label>Anzahl der Packstücke<input type="number" min="1" inputMode="numeric" value={data.packages} onChange={(event) => onChange("packages", event.target.value)} aria-invalid={Boolean(errors.packages)} /></label>
-        <label>Gesamtgewicht in kg<input type="number" min="1" inputMode="decimal" value={data.weightKg} onChange={(event) => onChange("weightKg", event.target.value)} aria-invalid={Boolean(errors.weightKg)} /></label>
+        <label>Packstückart<select value={data.packageType} onChange={(event) => onChange("packageType", event.target.value as TransportRequestData["packageType"])} aria-invalid={Boolean(errors.packageType)}><option value="">Bitte auswählen</option>{packageTypeOptions.map((option) => <option key={option} value={option}>{option}</option>)}</select></label>
+        <label>Warenart<select value={data.goodsType} onChange={(event) => onChange("goodsType", event.target.value as TransportRequestData["goodsType"])} aria-invalid={Boolean(errors.goodsType)}><option value="">Bitte auswählen</option>{goodsTypeOptions.map((option) => <option key={option} value={option}>{option}</option>)}</select></label>
+        <label>Gesamtgewicht der Ware in kg<input type="number" min="1" inputMode="decimal" value={data.weightKg} onChange={(event) => onChange("weightKg", event.target.value)} aria-invalid={Boolean(errors.weightKg)} /></label>
+        <div className="shipment-dimensions">
+          <label>Länge in cm<input type="number" min="1" inputMode="decimal" value={data.lengthCm} onChange={(event) => onChange("lengthCm", event.target.value)} aria-invalid={Boolean(errors.lengthCm)} /></label>
+          <label>Breite in cm<input type="number" min="1" inputMode="decimal" value={data.widthCm} onChange={(event) => onChange("widthCm", event.target.value)} aria-invalid={Boolean(errors.widthCm)} /></label>
+          <label>Höhe in cm<input type="number" min="1" inputMode="decimal" value={data.heightCm} onChange={(event) => onChange("heightCm", event.target.value)} aria-invalid={Boolean(errors.heightCm)} /></label>
+        </div>
       </div>
-      <FieldError message={errors.pickupDate || errors.packages || errors.weightKg} />
-      <div className="request-form-grid request-form-grid--full">
-        <label>Beschreibung der Ware<textarea value={data.goodsDescription} onChange={(event) => onChange("goodsDescription", event.target.value)} rows={3} /></label>
-        <label>Maße<input value={data.dimensions} onChange={(event) => onChange("dimensions", event.target.value)} placeholder="z. B. 120 × 80 × 100 cm" /></label>
-        <label>{specialLabel}<textarea value={data.specialNotes} onChange={(event) => onChange("specialNotes", event.target.value)} rows={3} aria-invalid={Boolean(errors.specialNotes)} /></label>
-      </div>
-      <FieldError message={errors.specialNotes} />
+      <FieldError message={timeError} />
+      <FieldError message={shipmentError} />
+      <FieldError message={dimensionsError} />
     </div>
   );
 }

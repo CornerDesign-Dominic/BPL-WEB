@@ -7,19 +7,19 @@ export function ContactCta() {
       <Container className="contact-cta__inner">
         <div>
           <p className="eyebrow eyebrow--light">Kontakt</p>
-          <h2 id="contact-title">Sie haben eine Transportanfrage?</h2>
+          <h2 id="contact-title">Ihre Sendung duldet keinen Aufschub?</h2>
         </div>
         <div className="contact-cta__content">
           <p>
-            Sprechen Sie mit uns über Ihre Anforderungen. Wir prüfen kurzfristig,
-            welche Transportlösung zu Ihrem Bedarf passt.
+            Sprechen Sie direkt mit uns. Wir klären Verfügbarkeit, Route und
+            Zeitfenster und geben Ihnen schnell eine belastbare Rückmeldung.
           </p>
           <div className="contact-cta__actions">
             <Button href="mailto:info@brennpunkt-logistik.de" variant="secondary">
-              Transport anfragen
+              Anfrage senden
             </Button>
             <Button href="mailto:express@brennpunkt-logistik.de" variant="secondary">
-              Express kontaktieren
+              Express anrufen
             </Button>
           </div>
           <div className="contact-details">

@@ -19,16 +19,20 @@ const initialData: TransportRequestData = {
   deliveryCity: "",
   pickupDate: "",
   pickupTime: "",
+  pickupEndDate: "",
+  pickupEndTime: "",
+  isFixedPickup: false,
   packages: "",
+  packageType: "",
+  goodsType: "",
   weightKg: "",
-  goodsDescription: "",
-  dimensions: "",
-  specialNotes: "",
+  lengthCm: "",
+  widthCm: "",
+  heightCm: "",
   company: "",
   contactPerson: "",
   email: "",
   phone: "",
-  customerNumber: "",
   message: "",
   privacyAccepted: false,
   website: "",
@@ -49,16 +53,20 @@ function validateStep(step: number, data: TransportRequestData): FieldErrors {
   }
   if (step === 3) {
     if (!data.pickupDate) errors.pickupDate = "Bitte geben Sie ein Abholdatum an.";
+    if (!data.pickupTime) errors.pickupTime = "Bitte geben Sie eine Abholuhrzeit an.";
+    if (!data.isFixedPickup && !data.pickupEndDate) errors.pickupEndDate = "Bitte geben Sie ein Enddatum an.";
+    if (!data.isFixedPickup && !data.pickupEndTime) errors.pickupEndTime = "Bitte geben Sie eine Enduhrzeit an.";
     if (!data.packages || Number(data.packages) < 1) errors.packages = "Bitte geben Sie die Anzahl der Packstücke an.";
+    if (!data.packageType) errors.packageType = "Bitte wählen Sie eine Packstückart.";
+    if (!data.goodsType) errors.goodsType = "Bitte wählen Sie eine Warenart.";
     if (!data.weightKg || Number(data.weightKg) <= 0) errors.weightKg = "Bitte geben Sie ein Gesamtgewicht an.";
-    if (data.transportType === "special" && !data.specialNotes.trim()) errors.specialNotes = "Bitte beschreiben Sie die Besonderheiten.";
+    if (!data.lengthCm || Number(data.lengthCm) <= 0) errors.lengthCm = "Bitte geben Sie die Länge an.";
+    if (!data.widthCm || Number(data.widthCm) <= 0) errors.widthCm = "Bitte geben Sie die Breite an.";
+    if (!data.heightCm || Number(data.heightCm) <= 0) errors.heightCm = "Bitte geben Sie die Höhe an.";
   }
   if (step === 4) {
-    if (!data.company.trim()) errors.company = "Bitte geben Sie den Firmennamen an.";
-    if (!data.contactPerson.trim()) errors.contactPerson = "Bitte geben Sie einen Ansprechpartner an.";
     if (!emailPattern.test(data.email)) errors.email = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
-    if (!data.phone.trim()) errors.phone = "Bitte geben Sie eine Telefonnummer an.";
-    if (!data.privacyAccepted) errors.privacyAccepted = "Bitte bestätigen Sie die Datenschutzhinweise.";
+    if (!data.privacyAccepted) errors.privacyAccepted = "Bitte bestätigen Sie die Datenschutzhinweise und die AGB.";
   }
 
   return errors;
@@ -67,6 +75,7 @@ function validateStep(step: number, data: TransportRequestData): FieldErrors {
 export function TransportRequestForm() {
   const [data, setData] = useState(initialData);
   const [step, setStep] = useState(1);
+  const [highestReachedStep, setHighestReachedStep] = useState(1);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
@@ -79,7 +88,11 @@ export function TransportRequestForm() {
   const goNext = () => {
     const stepErrors = validateStep(step, data);
     setErrors(stepErrors);
-    if (Object.keys(stepErrors).length === 0) setStep((current) => Math.min(current + 1, 5));
+    if (Object.keys(stepErrors).length === 0) {
+      const nextStep = Math.min(step + 1, 5);
+      setHighestReachedStep((current) => Math.max(current, nextStep));
+      setStep(nextStep);
+    }
   };
 
   const submit = async () => {
@@ -115,10 +128,11 @@ export function TransportRequestForm() {
     <section className="transport-request-section" id="transportanfrage" aria-labelledby="transport-request-title">
       <div className="page-container transport-request-box">
         <div className="transport-request-box__intro">
-          <h2 id="transport-request-title">Transport anfragen</h2>
+          <p className="eyebrow">Unverbindliche Anfrage</p>
+          <h2 id="transport-request-title">Transport schnell anfragen</h2>
         </div>
         <form noValidate onSubmit={(event) => { event.preventDefault(); if (step === 5) void submit(); }}>
-          <div className="request-step-content">
+          <div className={`request-step-content ${step === 3 ? "request-step-content--shipment" : step === 4 ? "request-step-content--contact" : ""}`}>
             {step === 1 ? <TransportTypeStep data={data} errors={errors} onChange={updateField} /> : null}
             {step === 2 ? <RouteStep data={data} errors={errors} onChange={updateField} /> : null}
             {step === 3 ? <ShipmentStep data={data} errors={errors} onChange={updateField} /> : null}
@@ -129,7 +143,7 @@ export function TransportRequestForm() {
             {step > 1 ? <button className="button button--secondary" type="button" onClick={() => setStep((current) => current - 1)}>Zurück</button> : <span aria-hidden="true" />}
             {step < 5 ? <button className="button button--primary" type="button" disabled={step === 1 && !data.transportType} onClick={goNext}>Weiter</button> : <button className="button button--primary" type="submit" disabled={status === "submitting"}>{submitLabel}</button>}
           </div>
-          <TransportRequestProgress currentStep={step} />
+          <TransportRequestProgress currentStep={step} highestReachedStep={highestReachedStep} onStepChange={setStep} />
         </form>
         <div className={`request-status request-status--${status}`} aria-live="polite">
           {statusMessage}

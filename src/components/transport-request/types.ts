@@ -28,6 +28,31 @@ export const transportTypeOptions = [
 
 export type TransportType = (typeof transportTypeOptions)[number]["value"];
 
+export const packageTypeOptions = [
+  "Europalette",
+  "Einwegpalette",
+  "Karton",
+  "Bündel",
+  "Gitterbox",
+  "CHEP-Palette",
+  "Halbe Europalette",
+  "Sonstiges",
+] as const;
+
+export const goodsTypeOptions = [
+  "Getränke, Lebensmittel & Pflanzen",
+  "Chemikalien & Gesundheitsprodukte",
+  "Möbel & Zubehör",
+  "Industrieprodukte",
+  "Kleidung & Accessoires",
+  "Baumaterial",
+  "Fahrzeuge, Motoren & Ersatzteile",
+  "Geräte & Material",
+  "Freizeitartikel",
+  "Kartons & Drucke",
+  "Sonstiges",
+] as const;
+
 export type TransportRequestData = {
   transportType: TransportType | "";
   pickupCountry: string;
@@ -38,16 +63,20 @@ export type TransportRequestData = {
   deliveryCity: string;
   pickupDate: string;
   pickupTime: string;
+  pickupEndDate: string;
+  pickupEndTime: string;
+  isFixedPickup: boolean;
   packages: string;
+  packageType: "" | (typeof packageTypeOptions)[number];
+  goodsType: "" | (typeof goodsTypeOptions)[number];
   weightKg: string;
-  goodsDescription: string;
-  dimensions: string;
-  specialNotes: string;
+  lengthCm: string;
+  widthCm: string;
+  heightCm: string;
   company: string;
   contactPerson: string;
   email: string;
   phone: string;
-  customerNumber: string;
   message: string;
   privacyAccepted: boolean;
   website: string;

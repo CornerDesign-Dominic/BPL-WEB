@@ -12,7 +12,7 @@ const sourceSans3 = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: "Brennpunkt Logistik GmbH",
-  description: "Express-, Regel- und Spezialtransporte in ganz Europa.",
+  description: "Zeitkritische Express-, Direkt- und Sonderfahrten in Deutschland und Europa.",
 };
 
 type RootLayoutProps = Readonly<{

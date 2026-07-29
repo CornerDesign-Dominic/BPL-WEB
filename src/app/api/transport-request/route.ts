@@ -19,14 +19,19 @@ function isValidRequest(payload: TransportRequestPayload) {
   const deliveryPostalCode = stringValue(payload, "deliveryPostalCode", 5);
   const deliveryCity = stringValue(payload, "deliveryCity", 120);
   const pickupDate = stringValue(payload, "pickupDate", 20);
+  const pickupTime = stringValue(payload, "pickupTime", 20);
+  const pickupEndDate = stringValue(payload, "pickupEndDate", 20);
+  const pickupEndTime = stringValue(payload, "pickupEndTime", 20);
+  const isFixedPickup = payload.isFixedPickup === true;
   const packages = Number(stringValue(payload, "packages", 20));
+  const packageType = stringValue(payload, "packageType", 80);
+  const goodsType = stringValue(payload, "goodsType", 160);
   const weightKg = Number(stringValue(payload, "weightKg", 20));
-  const company = stringValue(payload, "company", 160);
-  const contactPerson = stringValue(payload, "contactPerson", 160);
+  const lengthCm = Number(stringValue(payload, "lengthCm", 20));
+  const widthCm = Number(stringValue(payload, "widthCm", 20));
+  const heightCm = Number(stringValue(payload, "heightCm", 20));
   const email = stringValue(payload, "email", 254);
-  const phone = stringValue(payload, "phone", 80);
   const privacyAccepted = payload.privacyAccepted === true;
-  const specialNotes = stringValue(payload, "specialNotes", 1500);
 
   return (
     transportTypes.has(transportType) &&
@@ -37,14 +42,17 @@ function isValidRequest(payload: TransportRequestPayload) {
     /^\d{5}$/.test(deliveryPostalCode) &&
     Boolean(deliveryCity) &&
     Boolean(pickupDate) &&
+    Boolean(pickupTime) &&
+    (isFixedPickup || (Boolean(pickupEndDate) && Boolean(pickupEndTime))) &&
     Number.isFinite(packages) && packages > 0 &&
+    Boolean(packageType) &&
+    Boolean(goodsType) &&
     Number.isFinite(weightKg) && weightKg > 0 &&
-    Boolean(company) &&
-    Boolean(contactPerson) &&
+    Number.isFinite(lengthCm) && lengthCm > 0 &&
+    Number.isFinite(widthCm) && widthCm > 0 &&
+    Number.isFinite(heightCm) && heightCm > 0 &&
     emailPattern.test(email) &&
-    Boolean(phone) &&
-    privacyAccepted &&
-    (transportType !== "special" || Boolean(specialNotes))
+    privacyAccepted
   );
 }
 
