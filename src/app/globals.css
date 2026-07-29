@@ -197,9 +197,6 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .service-focus__core { max-width: 62rem; padding: var(--space-5) 0 0; border-top: 0.25rem solid var(--color-primary); }
 .service-focus__core h3 { margin-bottom: var(--space-3); font-size: clamp(1.5rem, 3vw, 2.25rem); }
 .service-focus__core > p:not(.eyebrow) { max-width: 51rem; margin-bottom: var(--space-3); color: var(--color-text-muted); }
-.service-focus__points { display: grid; margin: var(--space-5) 0 0; padding: var(--space-3) 0 0; border-top: 1px solid var(--color-border); grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-3); list-style: none; }
-.service-focus__points li { display: grid; gap: var(--space-1); color: var(--color-text-muted); font-size: var(--text-sm); font-weight: 700; line-height: 1.35; }
-.service-focus__points li::before { width: 1.5rem; height: 0.1875rem; background: var(--color-primary); content: ""; }
 
 .company-layout { display: grid; grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1.3fr); align-items: start; gap: clamp(var(--space-5), 9vw, var(--space-12)); }
 .company-layout__index { display: grid; align-content: start; justify-items: start; gap: 0.35rem; padding: var(--space-4) 0; border-top: 0.25rem solid var(--color-primary); border-bottom: 1px solid var(--color-border); color: var(--color-text-muted); font-size: var(--text-sm); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
@@ -233,7 +230,6 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 
 @media (max-width: 68rem) {
   .site-navigation { gap: var(--space-2); }
-  .service-focus__points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .transport-type-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
@@ -276,6 +272,5 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
   .request-actions { gap: var(--space-2); }
   .section { padding-block: var(--space-8); }
   .section-heading { margin-bottom: var(--space-4); }
-  .service-focus__points { grid-template-columns: 1fr; gap: var(--space-2); }
   .site-footer__legal { justify-self: start; }
 }

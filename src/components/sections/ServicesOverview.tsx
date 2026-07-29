@@ -1,13 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 
-const servicePoints = [
-  "kurzfristige Fahrzeugbereitstellung",
-  "direkte Transporte ohne Umladung",
-  "europaweite Organisation",
-  "klare Kommunikation während des Transports",
-];
-
 export function ServicesOverview() {
   return (
     <Section className="service-focus" id="leistungen" aria-labelledby="services-title">
@@ -36,9 +29,6 @@ export function ServicesOverview() {
             Stand informiert. So entsteht eine Transportlösung, die schnell organisiert,
             zuverlässig umgesetzt und klar begleitet wird.
           </p>
-          <ul className="service-focus__points">
-            {servicePoints.map((point) => <li key={point}>{point}</li>)}
-          </ul>
         </article>
       </Container>
     </Section>
