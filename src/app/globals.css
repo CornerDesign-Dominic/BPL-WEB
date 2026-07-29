@@ -189,17 +189,17 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 
 .section { padding-block: var(--space-10); scroll-margin-top: var(--header-height); }
 .section--surface { background: var(--color-surface); }
-.section--after-request { padding-top: 0; }
 .section-heading { display: grid; max-width: 44rem; margin-bottom: var(--space-6); }
 .section-heading > p:last-child, .split-layout__content > p { max-width: 41rem; margin-bottom: var(--space-3); color: var(--color-text-muted); }
-.service-grid { display: grid; grid-template-columns: 1.35fr 1fr 1fr; gap: var(--space-3); }
-.service-card { display: flex; min-height: 16rem; flex-direction: column; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-small); background: var(--color-background); }
-.service-card--primary { color: var(--color-background); border-color: var(--color-primary-dark); background: var(--color-primary-dark); }
-.service-card--primary h3, .service-card--primary > p:not(.service-card__number) { color: var(--color-background); }
-.service-card--secondary { border-top: 0.25rem solid var(--color-primary); }
-.service-card__number { margin-bottom: auto; color: var(--color-primary); font-size: var(--text-sm); font-weight: 800; }
-.service-card--primary .service-card__number { color: var(--color-primary-light); }
-.service-card > p:not(.service-card__number) { margin-bottom: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
+.service-focus { background: var(--color-background); }
+.service-focus__intro { max-width: 47rem; margin-bottom: var(--space-8); }
+.service-focus__intro > p:last-child { max-width: 43rem; margin-bottom: 0; color: var(--color-text-muted); }
+.service-focus__core { max-width: 62rem; padding: var(--space-5) 0 0; border-top: 0.25rem solid var(--color-primary); }
+.service-focus__core h3 { margin-bottom: var(--space-3); font-size: clamp(1.5rem, 3vw, 2.25rem); }
+.service-focus__core > p:not(.eyebrow) { max-width: 51rem; margin-bottom: var(--space-3); color: var(--color-text-muted); }
+.service-focus__points { display: grid; margin: var(--space-5) 0 0; padding: var(--space-3) 0 0; border-top: 1px solid var(--color-border); grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-3); list-style: none; }
+.service-focus__points li { display: grid; gap: var(--space-1); color: var(--color-text-muted); font-size: var(--text-sm); font-weight: 700; line-height: 1.35; }
+.service-focus__points li::before { width: 1.5rem; height: 0.1875rem; background: var(--color-primary); content: ""; }
 
 .company-layout { display: grid; grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1.3fr); align-items: start; gap: clamp(var(--space-5), 9vw, var(--space-12)); }
 .company-layout__index { display: grid; align-content: start; justify-items: start; gap: 0.35rem; padding: var(--space-4) 0; border-top: 0.25rem solid var(--color-primary); border-bottom: 1px solid var(--color-border); color: var(--color-text-muted); font-size: var(--text-sm); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
@@ -208,10 +208,6 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .company-points { display: grid; margin: var(--space-4) 0 0; padding: var(--space-3) 0 0; border-top: 1px solid var(--color-border); grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); list-style: none; }
 .company-points li { color: var(--color-text-muted); font-size: var(--text-sm); }
 .company-points li::before { display: inline-block; width: 0.45rem; height: 0.45rem; margin-right: var(--space-1); border-radius: 50%; background: var(--color-primary); content: ""; }
-
-.industry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
-.industry-card { min-height: 11rem; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-small); background: var(--color-background); }
-.industry-card p { margin-bottom: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
 
 .site-footer { overflow: hidden; border-top: 1px solid var(--color-border); background: var(--color-background); }
 .site-footer__skyline { height: clamp(4.5rem, 16vw, 13rem); pointer-events: none; background-image: url("/images/branding/wuppertal-skyline.jpg"); background-repeat: no-repeat; background-position: center bottom; background-size: 100% auto; }
@@ -237,8 +233,7 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 
 @media (max-width: 68rem) {
   .site-navigation { gap: var(--space-2); }
-  .service-grid { grid-template-columns: 1.25fr 1fr; }
-  .service-card--primary { grid-row: span 2; }
+  .service-focus__points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .transport-type-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
@@ -274,14 +269,13 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
   .request-step-content--shipment { height: auto; min-height: 25rem; }
   .request-step-content--contact { height: auto; min-height: 25rem; }
   .request-step-content--summary { height: auto; min-height: 25rem; }
-  .transport-type-grid, .route-grid, .request-form-grid, .shipment-form-grid, .shipment-time-grid, .shipment-dimensions, .summary-grid, .company-points, .industry-grid, .contact-page__details, .site-footer__inner { grid-template-columns: 1fr; }
+  .transport-type-grid, .route-grid, .request-form-grid, .shipment-form-grid, .shipment-time-grid, .shipment-dimensions, .summary-grid, .company-points, .contact-page__details, .site-footer__inner { grid-template-columns: 1fr; }
   .transport-type-card { min-height: 6.5rem; padding: var(--space-2); }
   .request-form-grid--full label:first-child { grid-column: auto; }
   .request-form-grid__full { grid-column: auto; }
   .request-actions { gap: var(--space-2); }
   .section { padding-block: var(--space-8); }
   .section-heading { margin-bottom: var(--space-4); }
-  .service-grid { grid-template-columns: 1fr; }
-  .service-card, .service-card--primary { min-height: 12rem; grid-row: auto; }
+  .service-focus__points { grid-template-columns: 1fr; gap: var(--space-2); }
   .site-footer__legal { justify-self: start; }
 }
