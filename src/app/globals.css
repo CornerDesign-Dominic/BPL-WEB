@@ -127,36 +127,14 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .transport-request-section { padding: clamp(var(--space-5), 5vw, var(--space-8)) 0 var(--space-10); scroll-margin-top: calc(var(--header-height) + var(--space-2)); background: var(--color-surface); }
 .transport-request-section__heading { margin-bottom: var(--space-3); }
 .transport-request-section__heading h2 { max-width: none; margin: 0; color: var(--color-text); font-size: clamp(1.875rem, 3vw, 2.5rem); font-weight: 800; letter-spacing: -0.035em; }
-.transport-request-composition { position: relative; display: grid; width: min(100% - 3rem, calc(var(--content-width) + 20rem)); margin-inline: auto; grid-template-columns: clamp(7rem, 10vw, 10rem) minmax(0, var(--content-width)) clamp(7rem, 10vw, 10rem); align-items: end; }
-.transport-request-composition::after { position: absolute; right: 0.875rem; bottom: 0.25rem; left: 0.875rem; height: 0.125rem; background: #141d26; content: ""; pointer-events: none; }
-.transport-request-vehicle { display: grid; min-width: 0; grid-template-rows: auto 4.5rem; align-self: stretch; }
-.transport-request-box { position: relative; z-index: 1; min-width: 0; padding: clamp(var(--space-3), 3.5vw, var(--space-6)); padding-bottom: var(--space-3); border: 0.125rem solid #263746; border-radius: 0; background: var(--color-background); box-shadow: 0 0.75rem 1.75rem rgb(17 24 39 / 7%); }
+.transport-request-composition { display: grid; width: min(100% - 3rem, calc(var(--content-width) + 20rem)); margin-inline: auto; grid-template-columns: clamp(7rem, 10vw, 10rem) minmax(0, var(--content-width)) clamp(8rem, 11vw, 12rem); grid-template-rows: auto auto; align-items: end; }
+.transport-request-trailer { min-width: 0; grid-column: 2; grid-row: 1; }
+.transport-request-box { position: relative; min-width: 0; padding: clamp(var(--space-3), 3.5vw, var(--space-6)); padding-bottom: var(--space-3); border: 0.125rem solid #263746; border-radius: 0; background: var(--color-background); box-shadow: 0 0.75rem 1.75rem rgb(17 24 39 / 7%); }
 .transport-request-box::before { display: none; }
-.transport-request-cargo, .transport-request-cab, .transport-request-vehicle__underbody { z-index: 1; min-width: 0; pointer-events: none; }
-.transport-request-cargo { display: flex; align-items: flex-end; justify-content: flex-end; padding-right: 1.25rem; }
-.transport-request-cargo__stack { position: relative; width: min(100%, 8.75rem); height: 6.5rem; }
-.transport-request-cargo__crate { position: absolute; display: block; border: 0.125rem solid #263746; border-radius: 0; background: var(--color-background); }
-.transport-request-cargo__crate::before, .transport-request-cargo__crate::after { position: absolute; background: #263746; content: ""; }
-.transport-request-cargo__crate::before { top: 0.625rem; right: 0.5rem; left: 0.5rem; height: 1px; }
-.transport-request-cargo__crate::after { top: 0.5rem; bottom: 0.5rem; left: 50%; width: 1px; }
-.transport-request-cargo__crate--large { right: 0; bottom: 0.875rem; width: 5.875rem; height: 3.625rem; }
-.transport-request-cargo__crate--small { right: 2.625rem; bottom: 4.5rem; width: 3.5rem; height: 2rem; }
-.transport-request-cargo__pallet { position: absolute; right: -0.25rem; bottom: 0.25rem; width: 6.5rem; height: 0.5rem; border: 0.125rem solid #263746; background: var(--color-background); }
-.transport-request-cargo__pallet::after { position: absolute; top: 0.5rem; right: 0.5rem; left: 0.5rem; height: 0.25rem; border-inline: 0.125rem solid #263746; content: ""; }
-.transport-request-vehicle__underbody { position: relative; display: grid; min-height: 0; grid-template-columns: minmax(3rem, 1fr) repeat(3, 3.25rem) minmax(5.75rem, 10rem); align-items: end; column-gap: 0.75rem; padding: 0.625rem 1.25rem 0; }
-.transport-request-vehicle__underbody::before { position: absolute; top: 0.75rem; right: 0; left: 0; height: 0.125rem; background: #141d26; content: ""; }
-.transport-request-vehicle__underbody::after { position: absolute; top: 0.75rem; left: 76%; width: 0.25rem; height: 1.5rem; border-bottom: 0.125rem solid #141d26; background: #141d26; content: ""; }
-.transport-request-vehicle__tank { width: 100%; height: 1.875rem; align-self: end; grid-column: 5; margin-bottom: 0.3125rem; border: 0.125rem solid #263746; border-radius: 0; background: var(--color-background); }
-.transport-request-vehicle__wheel, .transport-request-cab__wheel { display: block; width: 3.25rem; height: 3.25rem; border: 0.25rem solid #141d26; border-radius: 50%; background: var(--color-background); box-shadow: inset 0 0 0 0.375rem var(--color-background), inset 0 0 0 0.5rem #141d26; }
-.transport-request-vehicle__wheel:nth-of-type(2) { grid-column: 2; }
-.transport-request-vehicle__wheel:nth-of-type(3) { grid-column: 3; }
-.transport-request-vehicle__wheel:nth-of-type(4) { grid-column: 4; }
-.transport-request-cab { position: relative; display: grid; width: min(100%, 9.75rem); grid-template-columns: repeat(2, 3.25rem); grid-template-rows: 11rem 3.25rem; align-items: end; justify-content: space-between; gap: 0.5rem; align-self: end; justify-self: start; }
-.transport-request-cab::before { position: absolute; bottom: 4.25rem; left: -1rem; width: 1rem; height: 0.375rem; background: #141d26; content: ""; }
-.transport-request-cab__body { position: relative; display: block; height: 11rem; grid-column: 1 / -1; border: 0.125rem solid #141d26; border-radius: 0; background: var(--color-background); clip-path: polygon(0 0, 55% 0, 76% 8%, 91% 19%, 100% 37%, 100% 100%, 0 100%); }
-.transport-request-cab__body::before { position: absolute; top: 2.25rem; right: 0.625rem; left: 0.875rem; height: 3rem; border: 0.125rem solid #141d26; border-radius: 0.25rem 0.5rem 0.125rem 0.125rem; background: var(--color-background); content: ""; }
-.transport-request-cab__body::after { position: absolute; right: 0.875rem; bottom: 1.25rem; left: 0.875rem; height: 0.125rem; background: #141d26; content: ""; }
-.transport-request-cab__body span { position: absolute; top: 2.25rem; left: 53%; width: 0.125rem; height: 3rem; background: #141d26; }
+.transport-request-decoration { display: block; min-width: 0; color: #263746; pointer-events: none; }
+.transport-request-decoration--pallet { width: min(100%, 8.5rem); margin-right: 1.25rem; grid-column: 1; grid-row: 1 / 3; align-self: end; justify-self: end; }
+.transport-request-decoration--cab { width: min(100%, 11.5rem); grid-column: 3; grid-row: 1 / 3; align-self: end; justify-self: start; }
+.transport-request-decoration--chassis { width: 100%; grid-column: 2 / 4; grid-row: 2; align-self: start; }
 .transport-request-box form { display: grid; min-height: 0; grid-template-rows: auto auto auto; }
 .request-step-content { padding: 0 0 var(--space-4); }
 .request-progress { display: grid; margin: 0; padding: var(--space-4) 0 0; border-top: 1px solid var(--color-border); grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-2); list-style: none; }
@@ -323,8 +301,7 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
   .site-navigation { gap: var(--space-2); }
   .transport-type-grid { grid-template-columns: repeat(3, 1fr); }
   .transport-request-composition { display: block; width: min(100% - 3rem, var(--content-width)); }
-  .transport-request-vehicle { display: block; }
-  .transport-request-cargo, .transport-request-cab, .transport-request-vehicle__underbody { display: none; }
+  .transport-request-decoration { display: none; }
 }
 
 @media (max-width: 52rem) {

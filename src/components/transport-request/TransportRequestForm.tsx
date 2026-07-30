@@ -5,6 +5,9 @@ import { ContactStep } from "./ContactStep";
 import { RouteStep } from "./RouteStep";
 import { ShipmentStep } from "./ShipmentStep";
 import { SummaryStep } from "./SummaryStep";
+import { PalletDecoration } from "./PalletDecoration";
+import { TruckCabDecoration } from "./TruckCabDecoration";
+import { TruckChassisDecoration } from "./TruckChassisDecoration";
 import { TransportRequestProgress } from "./TransportRequestProgress";
 import { TransportTypeStep } from "./TransportTypeStep";
 import type { FieldErrors, TransportRequestData, UpdateTransportRequestField } from "./types";
@@ -126,14 +129,8 @@ export function TransportRequestForm() {
         <h2 id="transport-request-heading">Transportangebot anfragen</h2>
       </div>
       <div className="transport-request-composition">
-        <div className="transport-request-cargo" aria-hidden="true">
-          <div className="transport-request-cargo__stack">
-            <span className="transport-request-cargo__crate transport-request-cargo__crate--large" />
-            <span className="transport-request-cargo__crate transport-request-cargo__crate--small" />
-            <span className="transport-request-cargo__pallet" />
-          </div>
-        </div>
-        <div className="transport-request-vehicle">
+        <PalletDecoration className="transport-request-decoration transport-request-decoration--pallet" />
+        <div className="transport-request-trailer">
           <div className="transport-request-box">
             <form noValidate onSubmit={(event) => { event.preventDefault(); if (step === 5) void submit(); }}>
               <div className="request-step-content">
@@ -147,21 +144,12 @@ export function TransportRequestForm() {
                 {step > 1 ? <button className="button button--secondary" type="button" onClick={() => setStep((current) => current - 1)}>Zurück</button> : <span aria-hidden="true" />}
                 {step < 5 ? <button className="button button--primary" type="button" disabled={step === 1 && !data.transportType} onClick={goNext}>Weiter</button> : <button className="button button--primary" type="submit" disabled={status === "submitting"}>{submitLabel}</button>}
               </div>
-              <TransportRequestProgress currentStep={step} highestReachedStep={highestReachedStep} onStepChange={setStep} />
-            </form>
-          </div>
-          <div className="transport-request-vehicle__underbody" aria-hidden="true">
-            <span className="transport-request-vehicle__tank" />
-            <span className="transport-request-vehicle__wheel" />
-            <span className="transport-request-vehicle__wheel" />
-            <span className="transport-request-vehicle__wheel" />
-          </div>
+            <TransportRequestProgress currentStep={step} highestReachedStep={highestReachedStep} onStepChange={setStep} />
+          </form>
         </div>
-        <div className="transport-request-cab" aria-hidden="true">
-          <span className="transport-request-cab__body"><span /></span>
-          <span className="transport-request-cab__wheel" />
-          <span className="transport-request-cab__wheel" />
         </div>
+        <TruckCabDecoration className="transport-request-decoration transport-request-decoration--cab" />
+        <TruckChassisDecoration className="transport-request-decoration transport-request-decoration--chassis" />
       </div>
     </section>
   );
