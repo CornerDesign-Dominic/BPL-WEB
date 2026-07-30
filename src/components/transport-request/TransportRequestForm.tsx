@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { ContactStep } from "./ContactStep";
 import { RouteStep } from "./RouteStep";
@@ -126,24 +125,21 @@ export function TransportRequestForm() {
       <div className="page-container transport-request-section__heading">
         <h2 id="transport-request-heading">Transportangebot anfragen</h2>
       </div>
-      <div className="transport-request-stage">
-        <Image className="transport-request-stage__truck" src="/images/truck/truck-outline.png" alt="" aria-hidden="true" width={1536} height={1024} />
-        <div className="transport-request-box">
-          <form noValidate onSubmit={(event) => { event.preventDefault(); if (step === 5) void submit(); }}>
-            <div className="request-step-content">
-              {step === 1 ? <TransportTypeStep data={data} onChange={updateField} /> : null}
-              {step === 2 ? <RouteStep data={data} errors={errors} onChange={updateField} /> : null}
-              {step === 3 ? <ShipmentStep data={data} errors={errors} onChange={updateField} /> : null}
-              {step === 4 ? <ContactStep data={data} errors={errors} onChange={updateField} /> : null}
-              {step === 5 ? <SummaryStep data={data} onEdit={setStep} /> : null}
-            </div>
-            <div className="request-actions">
-              {step > 1 ? <button className="button button--secondary" type="button" onClick={() => setStep((current) => current - 1)}>Zurück</button> : <span aria-hidden="true" />}
-              {step < 5 ? <button className="button button--primary" type="button" disabled={step === 1 && !data.transportType} onClick={goNext}>Weiter</button> : <button className="button button--primary" type="submit" disabled={status === "submitting"}>{submitLabel}</button>}
-            </div>
-            <TransportRequestProgress currentStep={step} highestReachedStep={highestReachedStep} onStepChange={setStep} />
-          </form>
-        </div>
+      <div className="page-container transport-request-box">
+        <form noValidate onSubmit={(event) => { event.preventDefault(); if (step === 5) void submit(); }}>
+          <div className="request-step-content">
+            {step === 1 ? <TransportTypeStep data={data} onChange={updateField} /> : null}
+            {step === 2 ? <RouteStep data={data} errors={errors} onChange={updateField} /> : null}
+            {step === 3 ? <ShipmentStep data={data} errors={errors} onChange={updateField} /> : null}
+            {step === 4 ? <ContactStep data={data} errors={errors} onChange={updateField} /> : null}
+            {step === 5 ? <SummaryStep data={data} onEdit={setStep} /> : null}
+          </div>
+          <div className="request-actions">
+            {step > 1 ? <button className="button button--secondary" type="button" onClick={() => setStep((current) => current - 1)}>Zurück</button> : <span aria-hidden="true" />}
+            {step < 5 ? <button className="button button--primary" type="button" disabled={step === 1 && !data.transportType} onClick={goNext}>Weiter</button> : <button className="button button--primary" type="submit" disabled={status === "submitting"}>{submitLabel}</button>}
+          </div>
+          <TransportRequestProgress currentStep={step} highestReachedStep={highestReachedStep} onStepChange={setStep} />
+        </form>
       </div>
     </section>
   );
