@@ -126,36 +126,41 @@ export function TransportRequestForm() {
         <h2 id="transport-request-heading">Transportangebot anfragen</h2>
       </div>
       <div className="transport-request-composition">
-        <div className="transport-request-tractor" aria-hidden="true">
-          <div className="transport-request-tractor__vehicle">
-            <span className="transport-request-tractor__cab"><span /></span>
-            <span className="transport-request-tractor__wheel" />
-            <span className="transport-request-tractor__wheel" />
+        <div className="transport-request-cargo" aria-hidden="true">
+          <div className="transport-request-cargo__stack">
+            <span className="transport-request-cargo__crate transport-request-cargo__crate--large" />
+            <span className="transport-request-cargo__crate transport-request-cargo__crate--small" />
+            <span className="transport-request-cargo__pallet" />
           </div>
         </div>
-        <div className="transport-request-box">
-          <form noValidate onSubmit={(event) => { event.preventDefault(); if (step === 5) void submit(); }}>
-            <div className="request-step-content">
-              {step === 1 ? <TransportTypeStep data={data} onChange={updateField} /> : null}
-              {step === 2 ? <RouteStep data={data} errors={errors} onChange={updateField} /> : null}
-              {step === 3 ? <ShipmentStep data={data} errors={errors} onChange={updateField} /> : null}
-              {step === 4 ? <ContactStep data={data} errors={errors} onChange={updateField} /> : null}
-              {step === 5 ? <SummaryStep data={data} onEdit={setStep} /> : null}
-            </div>
-            <div className="request-actions">
-              {step > 1 ? <button className="button button--secondary" type="button" onClick={() => setStep((current) => current - 1)}>Zurück</button> : <span aria-hidden="true" />}
-              {step < 5 ? <button className="button button--primary" type="button" disabled={step === 1 && !data.transportType} onClick={goNext}>Weiter</button> : <button className="button button--primary" type="submit" disabled={status === "submitting"}>{submitLabel}</button>}
-            </div>
-            <TransportRequestProgress currentStep={step} highestReachedStep={highestReachedStep} onStepChange={setStep} />
-          </form>
-        </div>
-        <div className="transport-request-loading" aria-hidden="true">
-          <div className="transport-request-loading__scene">
-            <span className="transport-request-loading__mast" />
-            <span className="transport-request-loading__package transport-request-loading__package--one" />
-            <span className="transport-request-loading__package transport-request-loading__package--two" />
-            <span className="transport-request-loading__pallet" />
+        <div className="transport-request-vehicle">
+          <div className="transport-request-box">
+            <form noValidate onSubmit={(event) => { event.preventDefault(); if (step === 5) void submit(); }}>
+              <div className="request-step-content">
+                {step === 1 ? <TransportTypeStep data={data} onChange={updateField} /> : null}
+                {step === 2 ? <RouteStep data={data} errors={errors} onChange={updateField} /> : null}
+                {step === 3 ? <ShipmentStep data={data} errors={errors} onChange={updateField} /> : null}
+                {step === 4 ? <ContactStep data={data} errors={errors} onChange={updateField} /> : null}
+                {step === 5 ? <SummaryStep data={data} onEdit={setStep} /> : null}
+              </div>
+              <div className="request-actions">
+                {step > 1 ? <button className="button button--secondary" type="button" onClick={() => setStep((current) => current - 1)}>Zurück</button> : <span aria-hidden="true" />}
+                {step < 5 ? <button className="button button--primary" type="button" disabled={step === 1 && !data.transportType} onClick={goNext}>Weiter</button> : <button className="button button--primary" type="submit" disabled={status === "submitting"}>{submitLabel}</button>}
+              </div>
+              <TransportRequestProgress currentStep={step} highestReachedStep={highestReachedStep} onStepChange={setStep} />
+            </form>
           </div>
+          <div className="transport-request-vehicle__underbody" aria-hidden="true">
+            <span className="transport-request-vehicle__tank" />
+            <span className="transport-request-vehicle__wheel" />
+            <span className="transport-request-vehicle__wheel" />
+            <span className="transport-request-vehicle__wheel" />
+          </div>
+        </div>
+        <div className="transport-request-cab" aria-hidden="true">
+          <span className="transport-request-cab__body"><span /></span>
+          <span className="transport-request-cab__wheel" />
+          <span className="transport-request-cab__wheel" />
         </div>
       </div>
     </section>
