@@ -6,7 +6,10 @@ export function Hero() {
       <Container className="hero__content">
         <h1 id="hero-title">Expresslogistik aus Wuppertal</h1>
         <p className="hero__subheadline">Transporte in Deutschland und Europa.</p>
-        <p className="hero__intro">Unser Ziel: keine Zeit verlieren – und Ihren Transport sofort in Bewegung bringen.</p>
+        <div className="hero__goal">
+          <p className="eyebrow">Unser Ziel</p>
+          <p className="hero__intro">Keine Zeit verlieren – und Ihren Transport sofort in Bewegung bringen.</p>
+        </div>
       </Container>
     </section>
   );
