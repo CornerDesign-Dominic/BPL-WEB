@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { goodsTypeOptions, packageTypeOptions, type FieldErrors, type TransportRequestData, type UpdateTransportRequestField } from "./types";
 
 type ShipmentStepProps = {
@@ -19,9 +20,13 @@ type TimeSelectProps = {
 };
 
 function TimeSelect({ value, invalid, onChange }: TimeSelectProps) {
-  const [hour = "", minute = ""] = value.split(":");
+  const [initialHour = "", initialMinute = ""] = value.split(":");
+  const [hour, setHour] = useState(initialHour);
+  const [minute, setMinute] = useState(initialMinute);
 
   const updateTime = (nextHour: string, nextMinute: string) => {
+    setHour(nextHour);
+    setMinute(nextMinute);
     onChange(nextHour && nextMinute ? `${nextHour}:${nextMinute}` : "");
   };
 
