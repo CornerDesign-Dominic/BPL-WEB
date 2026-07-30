@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { isPastTransportTime, toLocalDateValue, toLocalTimeValue } from "./dateTime";
 import { goodsTypeOptions, packageTypeOptions, type FieldErrors, type TransportRequestData, type UpdateTransportRequestField } from "./types";
 
 type ShipmentStepProps = {
@@ -14,17 +15,30 @@ const hourOptions = [
 const minuteOptions = Array.from({ length: 60 }, (_, index) => String(index).padStart(2, "0"));
 
 type TimeSelectProps = {
+  date: string;
   value: string;
   invalid: boolean;
   onChange: (value: string) => void;
 };
 
-function TimeSelect({ value, invalid, onChange }: TimeSelectProps) {
+function TimeSelect({ date, value, invalid, onChange }: TimeSelectProps) {
   const [initialHour = "", initialMinute = ""] = value.split(":");
   const [hour, setHour] = useState(initialHour);
   const [minute, setMinute] = useState(initialMinute);
+  const now = new Date();
+  const today = toLocalDateValue(now);
+  const currentTime = toLocalTimeValue(now);
+  const currentHour = currentTime.slice(0, 2);
+  const currentMinute = currentTime.slice(3);
 
   const updateTime = (nextHour: string, nextMinute: string) => {
+    if (isPastTransportTime(date, `${nextHour}:${nextMinute}`, now)) {
+      setHour(nextHour);
+      setMinute(nextHour === currentHour ? "" : nextMinute);
+      onChange("");
+      return;
+    }
+
     setHour(nextHour);
     setMinute(nextMinute);
     onChange(nextHour && nextMinute ? `${nextHour}:${nextMinute}` : "");
@@ -41,7 +55,7 @@ function TimeSelect({ value, invalid, onChange }: TimeSelectProps) {
           aria-invalid={invalid}
         >
           <option value="">Std.</option>
-          {hourOptions.map((option) => <option key={option} value={option}>{option}</option>)}
+          {hourOptions.map((option) => <option key={option} value={option} disabled={date === today && option < currentHour}>{option}</option>)}
         </select>
         <select
           aria-label="Minute"
@@ -50,7 +64,7 @@ function TimeSelect({ value, invalid, onChange }: TimeSelectProps) {
           aria-invalid={invalid}
         >
           <option value="">Min.</option>
-          {minuteOptions.map((option) => <option key={option} value={option}>{option}</option>)}
+          {minuteOptions.map((option) => <option key={option} value={option} disabled={date === today && hour === currentHour && option < currentMinute}>{option}</option>)}
         </select>
       </div>
     </div>
@@ -58,6 +72,16 @@ function TimeSelect({ value, invalid, onChange }: TimeSelectProps) {
 }
 
 export function ShipmentStep({ data, errors, onChange }: ShipmentStepProps) {
+  const today = toLocalDateValue();
+
+  const updateDate = (field: "pickupDate" | "pickupEndDate", value: string) => {
+    onChange(field, value);
+
+    const timeField = field === "pickupDate" ? "pickupTime" : "pickupEndTime";
+    const selectedTime = data[timeField];
+    if (isPastTransportTime(value, selectedTime)) onChange(timeField, "");
+  };
+
   return (
     <div className="request-step request-step--shipment">
       <div className="request-step__heading">
@@ -70,13 +94,13 @@ export function ShipmentStep({ data, errors, onChange }: ShipmentStepProps) {
           <div className="shipment-time-grid">
             <div className="shipment-time-row">
               <p>Von</p>
-              <label>Datum<input type="date" value={data.pickupDate} onChange={(event) => onChange("pickupDate", event.target.value)} aria-invalid={Boolean(errors.pickupDate)} /></label>
-              <TimeSelect value={data.pickupTime} invalid={Boolean(errors.pickupTime)} onChange={(value) => onChange("pickupTime", value)} />
+              <label>Datum<input type="date" min={today} value={data.pickupDate} onChange={(event) => updateDate("pickupDate", event.target.value)} aria-invalid={Boolean(errors.pickupDate)} /></label>
+              <TimeSelect key={data.pickupDate} date={data.pickupDate} value={data.pickupTime} invalid={Boolean(errors.pickupTime)} onChange={(value) => onChange("pickupTime", value)} />
             </div>
             {!data.isFixedPickup ? <div className="shipment-time-row">
               <p>Bis</p>
-              <label>Datum<input type="date" value={data.pickupEndDate} onChange={(event) => onChange("pickupEndDate", event.target.value)} aria-invalid={Boolean(errors.pickupEndDate)} /></label>
-              <TimeSelect value={data.pickupEndTime} invalid={Boolean(errors.pickupEndTime)} onChange={(value) => onChange("pickupEndTime", value)} />
+              <label>Datum<input type="date" min={today} value={data.pickupEndDate} onChange={(event) => updateDate("pickupEndDate", event.target.value)} aria-invalid={Boolean(errors.pickupEndDate)} /></label>
+              <TimeSelect key={data.pickupEndDate} date={data.pickupEndDate} value={data.pickupEndTime} invalid={Boolean(errors.pickupEndTime)} onChange={(value) => onChange("pickupEndTime", value)} />
             </div> : null}
           </div>
         </fieldset>

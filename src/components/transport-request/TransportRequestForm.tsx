@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ContactStep } from "./ContactStep";
+import { isPastTransportDate, isPastTransportTime } from "./dateTime";
 import { RouteStep } from "./RouteStep";
 import { ShipmentStep } from "./ShipmentStep";
 import { SummaryStep } from "./SummaryStep";
@@ -53,9 +54,13 @@ function validateStep(step: number, data: TransportRequestData): FieldErrors {
   }
   if (step === 3) {
     if (!data.pickupDate) errors.pickupDate = "Bitte geben Sie ein Abholdatum an.";
+    if (isPastTransportDate(data.pickupDate)) errors.pickupDate = "Das Abholdatum darf nicht in der Vergangenheit liegen.";
     if (!data.pickupTime) errors.pickupTime = "Bitte geben Sie eine Abholuhrzeit an.";
+    if (isPastTransportTime(data.pickupDate, data.pickupTime)) errors.pickupTime = "Für heute wählen Sie bitte eine zukünftige Uhrzeit.";
     if (!data.isFixedPickup && !data.pickupEndDate) errors.pickupEndDate = "Bitte geben Sie ein Enddatum an.";
+    if (!data.isFixedPickup && isPastTransportDate(data.pickupEndDate)) errors.pickupEndDate = "Das Enddatum darf nicht in der Vergangenheit liegen.";
     if (!data.isFixedPickup && !data.pickupEndTime) errors.pickupEndTime = "Bitte geben Sie eine Enduhrzeit an.";
+    if (!data.isFixedPickup && isPastTransportTime(data.pickupEndDate, data.pickupEndTime)) errors.pickupEndTime = "Für heute wählen Sie bitte eine zukünftige Uhrzeit.";
     if (!data.packages || Number(data.packages) < 1) errors.packages = "Bitte geben Sie die Anzahl der Packstücke an.";
     if (!data.packageType) errors.packageType = "Bitte wählen Sie eine Packstückart.";
     if (!data.goodsType) errors.goodsType = "Bitte wählen Sie eine Warenart.";

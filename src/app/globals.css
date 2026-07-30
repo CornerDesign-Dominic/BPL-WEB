@@ -107,8 +107,8 @@ h1, h2, h3, h4 { color: var(--color-text); font-weight: 700; letter-spacing: -0.
 h1 { max-width: 18ch; margin-bottom: 0.2rem; font-size: clamp(2.6rem, 5.2vw, 4.65rem); letter-spacing: -0.04em; line-height: 1.02; }
 h2 { max-width: 23ch; margin-bottom: var(--space-3); font-size: var(--text-xl); line-height: var(--line-height-heading); }
 h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
-.hero__subheadline { margin: 0 0 var(--space-3); color: var(--color-primary-dark); font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 700; }
-.hero__intro { max-width: 43rem; margin-bottom: var(--space-4); color: var(--color-text-muted); font-size: var(--text-lg); }
+.hero__subheadline { margin: 0 0 var(--space-4); color: var(--color-primary-dark); font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 700; }
+.hero__intro { max-width: 43rem; margin-bottom: var(--space-4); color: var(--color-text); font-size: clamp(1.125rem, 1.8vw, 1.35rem); font-weight: 700; line-height: 1.4; }
 
 .express-hero { border-bottom: 1px solid var(--color-border); background: var(--color-surface-alt); }
 .express-hero__content { display: flex; min-height: clamp(25rem, 48vh, 32rem); flex-direction: column; align-items: flex-start; justify-content: center; padding-block: var(--space-8); }
