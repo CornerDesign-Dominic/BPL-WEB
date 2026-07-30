@@ -61,6 +61,7 @@ export function ShipmentStep({ data, errors, onChange }: ShipmentStepProps) {
       <div className="shipment-groups">
         <fieldset className="shipment-group">
           <legend>Abholtermin</legend>
+          <label className="shipment-fix-check"><input type="checkbox" checked={data.isFixedPickup} onChange={(event) => onChange("isFixedPickup", event.target.checked)} /> Fixtermin</label>
           <div className="shipment-time-grid">
             <div className="shipment-time-row">
               <p>Von</p>
@@ -73,7 +74,6 @@ export function ShipmentStep({ data, errors, onChange }: ShipmentStepProps) {
               <TimeSelect value={data.pickupEndTime} invalid={Boolean(errors.pickupEndTime)} onChange={(value) => onChange("pickupEndTime", value)} />
             </div> : null}
           </div>
-          <label className="shipment-fix-check"><input type="checkbox" checked={data.isFixedPickup} onChange={(event) => onChange("isFixedPickup", event.target.checked)} /> Fixtermin</label>
         </fieldset>
         <fieldset className="shipment-group">
           <legend>Packstücke &amp; Ware</legend>

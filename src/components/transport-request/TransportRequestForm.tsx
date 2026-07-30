@@ -78,7 +78,6 @@ export function TransportRequestForm() {
   const [highestReachedStep, setHighestReachedStep] = useState(1);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const [statusMessage, setStatusMessage] = useState("");
 
   const updateField: UpdateTransportRequestField = (field, value) => {
     setData((current) => ({ ...current, [field]: value }));
@@ -104,7 +103,6 @@ export function TransportRequestForm() {
     }
 
     setStatus("submitting");
-    setStatusMessage("");
     try {
       const response = await fetch("/api/transport-request", {
         method: "POST",
@@ -115,10 +113,8 @@ export function TransportRequestForm() {
 
       if (!response.ok) throw new Error(result.message ?? "Die Anfrage konnte nicht übermittelt werden.");
       setStatus("success");
-      setStatusMessage("Vielen Dank. Ihre Transportanfrage wurde übermittelt. Wir melden uns nach Prüfung Ihrer Angaben.");
-    } catch (error) {
+    } catch {
       setStatus("error");
-      setStatusMessage(error instanceof Error ? error.message : "Die Anfrage konnte nicht übermittelt werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.");
     }
   };
 
@@ -145,10 +141,6 @@ export function TransportRequestForm() {
           </div>
           <TransportRequestProgress currentStep={step} highestReachedStep={highestReachedStep} onStepChange={setStep} />
         </form>
-        <div className={`request-status request-status--${status}`} aria-live="polite">
-          {statusMessage}
-          {status === "error" ? <span>Direkt erreichbar: <a href="tel:+4920226155771">+49 202 26155-771</a> · <a href="mailto:express@brennpunkt-logistik.de">express@brennpunkt-logistik.de</a></span> : null}
-        </div>
       </div>
     </section>
   );
