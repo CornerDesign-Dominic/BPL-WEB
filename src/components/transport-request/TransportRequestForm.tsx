@@ -121,12 +121,8 @@ export function TransportRequestForm() {
   const submitLabel = status === "submitting" ? "Anfrage wird übermittelt …" : "Transportanfrage absenden";
 
   return (
-    <section className="transport-request-section" id="transportanfrage" aria-labelledby="transport-request-title">
+    <section className="transport-request-section" id="transportanfrage" aria-label="Transportanfrage">
       <div className="page-container transport-request-box">
-        <div className="transport-request-box__intro">
-          <p className="eyebrow">Unverbindliche Anfrage</p>
-          <h2 id="transport-request-title">Transport schnell anfragen</h2>
-        </div>
         <form noValidate onSubmit={(event) => { event.preventDefault(); if (step === 5) void submit(); }}>
           <div className="request-step-content">
             {step === 1 ? <TransportTypeStep data={data} onChange={updateField} /> : null}
