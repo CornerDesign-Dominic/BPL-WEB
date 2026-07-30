@@ -6,6 +6,52 @@ type ShipmentStepProps = {
   onChange: UpdateTransportRequestField;
 };
 
+const hourOptions = [
+  ...Array.from({ length: 23 }, (_, index) => String(index + 1).padStart(2, "0")),
+  "00",
+];
+const minuteOptions = Array.from({ length: 60 }, (_, index) => String(index).padStart(2, "0"));
+
+type TimeSelectProps = {
+  value: string;
+  invalid: boolean;
+  onChange: (value: string) => void;
+};
+
+function TimeSelect({ value, invalid, onChange }: TimeSelectProps) {
+  const [hour = "", minute = ""] = value.split(":");
+
+  const updateTime = (nextHour: string, nextMinute: string) => {
+    onChange(nextHour && nextMinute ? `${nextHour}:${nextMinute}` : "");
+  };
+
+  return (
+    <div className="shipment-time-control" role="group" aria-label="Uhrzeit">
+      <span className="shipment-time-control__label">Uhrzeit</span>
+      <div className="shipment-time-control__selects">
+        <select
+          aria-label="Stunde"
+          value={hour}
+          onChange={(event) => updateTime(event.target.value, minute)}
+          aria-invalid={invalid}
+        >
+          <option value="">Std.</option>
+          {hourOptions.map((option) => <option key={option} value={option}>{option}</option>)}
+        </select>
+        <select
+          aria-label="Minute"
+          value={minute}
+          onChange={(event) => updateTime(hour, event.target.value)}
+          aria-invalid={invalid}
+        >
+          <option value="">Min.</option>
+          {minuteOptions.map((option) => <option key={option} value={option}>{option}</option>)}
+        </select>
+      </div>
+    </div>
+  );
+}
+
 export function ShipmentStep({ data, errors, onChange }: ShipmentStepProps) {
   return (
     <div className="request-step request-step--shipment">
@@ -19,12 +65,12 @@ export function ShipmentStep({ data, errors, onChange }: ShipmentStepProps) {
             <div className="shipment-time-row">
               <p>Von</p>
               <label>Datum<input type="date" value={data.pickupDate} onChange={(event) => onChange("pickupDate", event.target.value)} aria-invalid={Boolean(errors.pickupDate)} /></label>
-              <label>Uhrzeit<input type="time" value={data.pickupTime} onChange={(event) => onChange("pickupTime", event.target.value)} aria-invalid={Boolean(errors.pickupTime)} /></label>
+              <TimeSelect value={data.pickupTime} invalid={Boolean(errors.pickupTime)} onChange={(value) => onChange("pickupTime", value)} />
             </div>
             {!data.isFixedPickup ? <div className="shipment-time-row">
               <p>Bis</p>
               <label>Datum<input type="date" value={data.pickupEndDate} onChange={(event) => onChange("pickupEndDate", event.target.value)} aria-invalid={Boolean(errors.pickupEndDate)} /></label>
-              <label>Uhrzeit<input type="time" value={data.pickupEndTime} onChange={(event) => onChange("pickupEndTime", event.target.value)} aria-invalid={Boolean(errors.pickupEndTime)} /></label>
+              <TimeSelect value={data.pickupEndTime} invalid={Boolean(errors.pickupEndTime)} onChange={(value) => onChange("pickupEndTime", value)} />
             </div> : null}
           </div>
           <label className="shipment-fix-check"><input type="checkbox" checked={data.isFixedPickup} onChange={(event) => onChange("isFixedPickup", event.target.checked)} /> Fixtermin</label>
