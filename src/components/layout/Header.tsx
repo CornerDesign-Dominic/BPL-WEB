@@ -40,6 +40,13 @@ export function Header() {
           id="primary-navigation"
           aria-label="Hauptnavigation"
         >
+          <a
+            href="/expresslogistik"
+            aria-current={pathname === "/expresslogistik" ? "page" : undefined}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Expresslogistik
+          </a>
           <a href="/kontakt" onClick={() => setIsMenuOpen(false)}>
             Kontakt
           </a>
