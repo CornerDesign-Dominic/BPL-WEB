@@ -41,10 +41,10 @@ export default function ExpresslogistikPage() {
             <div className="express-section__heading express-section__heading--need">
               <h2 id="express-need-title">Wann entstehen Express-Transporte?</h2>
               <p>
-                Gründe für eine zügige Umsetzung können verschieden sein: Ein fehlendes Bauteil kann die Produktion aufhalten, eine dringend benötigte Ware muss kurzfristig verfügbar sein oder eine kritische Lieferung soll ihren verbindlichen Termin noch erreichen.
+                Gründe für eine zügige Umsetzung können verschieden sein: ein fehlendes Bauteil, eine dringend benötigte Ware oder eine unerwartete Bestellung. Von der Beschaffung bis zur Distribution können viele Ereignisse einen Expresstransport zur Folge haben.
               </p>
               <p>
-                All diese Situationen haben eines gemeinsam: Sie erfordern unverzügliches Handeln. Wir prüfen die Anfrage kurzfristig, organisieren das passende Fahrzeug und koordinieren die direkte Fahrt, damit Ihre Sendung zügig und zuverlässig ihr Ziel erreicht.
+                All diese Situationen haben eines gemeinsam: Sie erfordern unverzügliches Handeln.
               </p>
             </div>
           </Container>
