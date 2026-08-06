@@ -11,14 +11,6 @@ export const metadata: Metadata = {
     "Zeitkritische Express- und Direkttransporte in Deutschland und Europa – kurzfristig organisiert durch Brennpunkt Logistik.",
 };
 
-const processSteps = [
-  "Anfrage und Anforderungen kurzfristig prüfen",
-  "passendes Fahrzeug organisieren",
-  "direkte Fahrt ohne Umladung",
-  "Transport während der Durchführung koordinieren",
-  "Zustellung und aktuellen Stand klar kommunizieren",
-];
-
 const vehicles = ["Sprinter", "Klein-Lkw", "40-Tonner", "individuelle Sonderlösung"];
 
 export default function ExpresslogistikPage() {
@@ -52,14 +44,12 @@ export default function ExpresslogistikPage() {
 
         <Section className="express-section express-section--surface" aria-labelledby="express-process-title">
           <Container>
-            <div className="express-section__heading">
-              <h2 id="express-process-title">Direkt organisiert. Klar umgesetzt.</h2>
+            <div className="express-section__heading express-section__heading--compact">
+              <h2 id="express-process-title">Worauf kommt es jetzt an?</h2>
+              <p>
+                Entscheidend sind vollständige und klare Angaben zu Abholung, Zustellung, Sendungsmaß, Gewicht und Termin. So kann schnell das passende Fahrzeug organisiert und der Transport ohne unnötigen Zeitverlust zuverlässig umgesetzt werden.
+              </p>
             </div>
-            <ul className="express-checklist">
-              {processSteps.map((step) => (
-                <li key={step}>{step}</li>
-              ))}
-            </ul>
           </Container>
         </Section>
 

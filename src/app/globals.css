@@ -250,11 +250,6 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .express-section__heading--need { max-width: none; }
 .express-section__heading--need h2 { max-width: none; }
 .express-section__heading--need p + p { margin-top: var(--space-2); }
-.express-checklist { display: grid; max-width: 62rem; margin: 0; padding: 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); grid-template-columns: repeat(2, minmax(0, 1fr)); list-style: none; }
-.express-checklist li { display: flex; min-height: 4.5rem; align-items: center; padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--color-border); color: var(--color-text-muted); font-weight: 600; }
-.express-checklist li::before { width: 0.5rem; height: 0.5rem; flex: 0 0 auto; margin-right: var(--space-2); border-radius: 50%; background: var(--color-primary); content: ""; }
-.express-checklist li:nth-last-child(-n + 2) { border-bottom: 0; }
-.express-checklist li:nth-child(odd) { border-right: 1px solid var(--color-border); }
 .express-two-column { display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.72fr); gap: clamp(var(--space-5), 8vw, var(--space-12)); }
 .express-two-column .express-section__heading { margin-bottom: 0; }
 .express-vehicle-list { display: grid; margin: 0; padding: 0; border-top: 1px solid var(--color-border); list-style: none; }
@@ -321,9 +316,6 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
   .site-navigation__request:hover { color: var(--color-background) !important; background: var(--color-primary-dark); }
   .company-layout { grid-template-columns: 1fr; }
   .company-layout { gap: var(--space-3); }
-  .express-checklist { grid-template-columns: 1fr; }
-  .express-checklist li, .express-checklist li:nth-last-child(-n + 2), .express-checklist li:nth-child(odd) { border-right: 0; border-bottom: 1px solid var(--color-border); }
-  .express-checklist li:last-child { border-bottom: 0; }
   .express-two-column { grid-template-columns: 1fr; gap: var(--space-4); }
   .express-cta__content { min-height: 0; align-items: flex-start; flex-direction: column; padding-block: var(--space-8); }
   .company-layout__index { grid-template-columns: auto auto auto; align-items: baseline; justify-content: start; gap: var(--space-2); }
