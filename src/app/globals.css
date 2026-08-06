@@ -254,7 +254,9 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .express-cta__content { display: flex; min-height: 19rem; align-items: center; justify-content: space-between; gap: var(--space-6); padding-block: var(--space-6); }
 .express-cta h2 { max-width: 22ch; margin-bottom: var(--space-3); color: var(--color-background); }
 .express-cta p { max-width: 38rem; margin-bottom: 0; color: var(--color-primary-light); font-size: var(--text-lg); }
-.express-cta .button { flex: 0 0 auto; }
+.express-cta__actions { display: grid; flex: 0 0 auto; justify-items: end; gap: var(--space-3); }
+.express-cta__contact { display: grid; justify-items: end; gap: 0.25rem; color: var(--color-primary-light); font-size: var(--text-sm); }
+.express-cta__contact a:hover { color: var(--color-background); text-decoration: underline; text-decoration-color: var(--color-primary); text-underline-offset: 0.25em; }
 .service-focus { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); background: var(--color-surface-alt); }
 .service-focus__intro { max-width: 47rem; margin-bottom: var(--space-8); }
 .service-focus__intro h2 { font-size: clamp(1.125rem, 6vw, 2.75rem); }
@@ -313,6 +315,7 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
   .company-layout { grid-template-columns: 1fr; }
   .company-layout { gap: var(--space-3); }
   .express-cta__content { min-height: 0; align-items: flex-start; flex-direction: column; padding-block: var(--space-8); }
+  .express-cta__actions, .express-cta__contact { justify-items: start; }
   .company-layout__index { grid-template-columns: auto auto auto; align-items: baseline; justify-content: start; gap: var(--space-2); }
   .company-layout__index strong { font-size: 3.5rem; }
   .transport-type-grid { grid-template-columns: repeat(2, 1fr); }

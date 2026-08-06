@@ -70,10 +70,16 @@ export default function ExpresslogistikPage() {
             <div>
               <h2 id="express-cta-title">Ihre Sendung kann nicht warten?</h2>
               <p>
-                Senden Sie uns die wichtigsten Transportdaten. Wir prüfen kurzfristig die passende Lösung.
+                Senden Sie uns Ihre Anfrage und verlieren Sie keine weitere Zeit. Jede Minute zählt.
               </p>
             </div>
-            <Button href="/#transportanfrage">Expressanfrage starten</Button>
+            <div className="express-cta__actions">
+              <Button href="/#transportanfrage">Zum Angebotsformular</Button>
+              <div className="express-cta__contact">
+                <a href="mailto:express@brennpunkt-logistik.de">express@brennpunkt-logistik.de</a>
+                <a href="tel:+4920226155771">0202-26155771</a>
+              </div>
+            </div>
           </Container>
         </section>
       </main>
