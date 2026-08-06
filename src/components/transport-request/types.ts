@@ -1,18 +1,18 @@
 export const transportTypeOptions = [
   {
-    value: "groupage",
-    label: "Sammelgut",
-    description: "Für kleinere Sendungen, einzelne Paletten oder gebündelte Transporte.",
-  },
-  {
     value: "sprinter",
     label: "Sprinter",
     description: "Für zeitkritische und kleinere Direkttransporte.",
   },
   {
-    value: "small-truck",
-    label: "Klein-Lkw",
+    value: "truck-7-5t",
+    label: "7,5-Tonner",
     description: "Für mittlere Sendungen mit höherem Platz- oder Gewichtsbedarf.",
+  },
+  {
+    value: "truck-12-5t",
+    label: "12,5-Tonner",
+    description: "Für größere Sendungen mit zusätzlichem Platz- oder Gewichtsbedarf.",
   },
   {
     value: "truck-40t",
@@ -20,9 +20,9 @@ export const transportTypeOptions = [
     description: "Für größere Sendungen, Teil- oder Komplettladungen.",
   },
   {
-    value: "special",
-    label: "Spezial / Weiteres",
-    description: "Für besondere Abmessungen, Anforderungen oder noch unklare Transportarten.",
+    value: "other",
+    label: "Anderes",
+    description: "Für sonstige Anforderungen oder noch unklare Transportarten.",
   },
 ] as const;
 

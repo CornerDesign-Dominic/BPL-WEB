@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const transportTypes = new Set(["groupage", "sprinter", "small-truck", "truck-40t", "special"]);
+const transportTypes = new Set(["sprinter", "truck-7-5t", "truck-12-5t", "truck-40t", "other"]);
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type TransportRequestPayload = Record<string, unknown>;
