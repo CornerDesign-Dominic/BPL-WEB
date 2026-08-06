@@ -246,14 +246,10 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .express-section__heading { max-width: 45rem; margin-bottom: var(--space-6); }
 .express-section__heading h2 { margin-bottom: var(--space-3); }
 .express-section__heading p { max-width: 42rem; margin-bottom: 0; color: var(--color-text-muted); font-size: var(--text-lg); }
+.express-section__heading p + p { margin-top: var(--space-2); }
 .express-section__heading--compact { margin-bottom: 0; }
 .express-section__heading--need { max-width: none; }
 .express-section__heading--need h2 { max-width: none; }
-.express-section__heading--need p + p { margin-top: var(--space-2); }
-.express-two-column { display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.72fr); gap: clamp(var(--space-5), 8vw, var(--space-12)); }
-.express-two-column .express-section__heading { margin-bottom: 0; }
-.express-vehicle-list { display: grid; margin: 0; padding: 0; border-top: 1px solid var(--color-border); list-style: none; }
-.express-vehicle-list li { padding: var(--space-2) 0; border-bottom: 1px solid var(--color-border); color: var(--color-primary-dark); font-size: var(--text-lg); font-weight: 700; }
 .express-cta { background: var(--color-footer); }
 .express-cta__content { display: flex; min-height: 19rem; align-items: center; justify-content: space-between; gap: var(--space-6); padding-block: var(--space-6); }
 .express-cta h2 { max-width: 22ch; margin-bottom: var(--space-3); color: var(--color-background); }
@@ -316,7 +312,6 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
   .site-navigation__request:hover { color: var(--color-background) !important; background: var(--color-primary-dark); }
   .company-layout { grid-template-columns: 1fr; }
   .company-layout { gap: var(--space-3); }
-  .express-two-column { grid-template-columns: 1fr; gap: var(--space-4); }
   .express-cta__content { min-height: 0; align-items: flex-start; flex-direction: column; padding-block: var(--space-8); }
   .company-layout__index { grid-template-columns: auto auto auto; align-items: baseline; justify-content: start; gap: var(--space-2); }
   .company-layout__index strong { font-size: 3.5rem; }

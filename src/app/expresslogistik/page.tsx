@@ -11,8 +11,6 @@ export const metadata: Metadata = {
     "Zeitkritische Express- und Direkttransporte in Deutschland und Europa – kurzfristig organisiert durch Brennpunkt Logistik.",
 };
 
-const vehicles = ["Sprinter", "Klein-Lkw", "40-Tonner", "individuelle Sonderlösung"];
-
 export default function ExpresslogistikPage() {
   return (
     <div className="site-shell">
@@ -54,27 +52,14 @@ export default function ExpresslogistikPage() {
         </Section>
 
         <Section className="express-section" aria-labelledby="express-vehicles-title">
-          <Container className="express-two-column">
-            <div className="express-section__heading">
-              <h2 id="express-vehicles-title">Das passende Fahrzeug für Ihre Sendung</h2>
-              <p>
-                Je nach Größe, Gewicht und Dringlichkeit organisieren wir die passende Fahrzeuglösung.
-              </p>
-            </div>
-            <ul className="express-vehicle-list">
-              {vehicles.map((vehicle) => (
-                <li key={vehicle}>{vehicle}</li>
-              ))}
-            </ul>
-          </Container>
-        </Section>
-
-        <Section className="express-section express-section--surface" aria-labelledby="express-area-title">
           <Container>
             <div className="express-section__heading express-section__heading--compact">
-              <h2 id="express-area-title">Deutschland und Europa</h2>
+              <h2 id="express-vehicles-title">Kapazität finden</h2>
               <p>
-                Wir organisieren Express- und Direkttransporte innerhalb Deutschlands sowie europaweit.
+                Sind die Rahmenbedingungen klar, muss der passende Frachtraum gefunden werden. Genau hier kommen wir mit Erfahrung, einem verlässlichen Netzwerk und kurzen Entscheidungswegen ins Spiel.
+              </p>
+              <p>
+                Wir stimmen Fahrzeuggröße, Ladefläche und Verfügbarkeit auf Ihre Sendung ab und organisieren die Kapazität so, dass der Transport ohne unnötige Verzögerung starten kann.
               </p>
             </div>
           </Container>
