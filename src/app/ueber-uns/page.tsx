@@ -76,11 +76,11 @@ export default function UeberUnsPage() {
             <div className="about-guiding">
               <article>
                 <h3>Unsere Mission</h3>
-                <p>Wir organisieren Transporte so, dass unsere Kunden schnell, klar und zuverlässig handeln können.</p>
+                <p>Wir sind für unsere Kunden da, um herausfordernde Transportanforderungen zu übernehmen und ihnen Zeit für ihr Kerngeschäft zu schaffen.</p>
               </article>
               <article>
                 <h3>Unsere Vision</h3>
-                <p>Wir wollen als persönlicher und verlässlicher Logistikpartner wachsen, der moderne Prozesse mit direkter Zusammenarbeit verbindet.</p>
+                <p>Wir wollen Logistik so verlässlich machen, dass unsere Kunden auch in zeitlich herausfordernden Situationen jederzeit sicher planen können.</p>
               </article>
             </div>
           </Container>
