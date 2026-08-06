@@ -257,6 +257,12 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .express-cta__actions { display: grid; flex: 0 0 auto; justify-items: end; gap: var(--space-3); }
 .express-cta__contact { display: grid; justify-items: end; gap: 0.25rem; color: var(--color-primary-light); font-size: var(--text-sm); }
 .express-cta__contact a:hover { color: var(--color-background); text-decoration: underline; text-decoration-color: var(--color-primary); text-underline-offset: 0.25em; }
+.express-about { background: var(--color-primary); }
+.express-about__content { max-width: 48rem; }
+.express-about h2 { margin-bottom: var(--space-3); color: var(--color-background); }
+.express-about p { max-width: 44rem; margin-bottom: var(--space-2); color: var(--color-background); font-size: var(--text-lg); }
+.express-about__link { display: inline-flex; margin-top: var(--space-2); color: var(--color-background); font-weight: 800; text-decoration: underline; text-decoration-color: rgb(255 255 255 / 60%); text-decoration-thickness: 0.125rem; text-underline-offset: 0.25em; }
+.express-about__link:hover { text-decoration-color: var(--color-background); }
 .service-focus { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); background: var(--color-surface-alt); }
 .service-focus__intro { max-width: 47rem; margin-bottom: var(--space-8); }
 .service-focus__intro h2 { font-size: clamp(1.125rem, 6vw, 2.75rem); }

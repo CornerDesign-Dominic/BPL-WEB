@@ -70,7 +70,8 @@ export default function ExpresslogistikPage() {
             <div>
               <h2 id="express-cta-title">Ihre Sendung kann nicht warten?</h2>
               <p>
-                Senden Sie uns Ihre Anfrage und verlieren Sie keine weitere Zeit. Jede Minute zählt.
+                Senden Sie uns Ihre Anfrage und verlieren Sie keine weitere Zeit.<br />
+                Jede Minute zählt.
               </p>
             </div>
             <div className="express-cta__actions">
@@ -82,6 +83,19 @@ export default function ExpresslogistikPage() {
             </div>
           </Container>
         </section>
+
+        <Section className="express-about" aria-labelledby="express-about-title">
+          <Container className="express-about__content">
+            <h2 id="express-about-title">Warum Brennpunkt Logistik?</h2>
+            <p>
+              Wir verbinden kurze Entscheidungswege mit persönlicher Betreuung und zuverlässiger Transportorganisation.
+            </p>
+            <p>
+              So behalten Sie auch bei zeitkritischen Sendungen einen klaren Ansprechpartner und eine Lösung, die zu Ihrem Bedarf passt.
+            </p>
+            <a className="express-about__link" href="/ueber-uns">Mehr über uns</a>
+          </Container>
+        </Section>
       </main>
       <Footer />
     </div>
