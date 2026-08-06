@@ -46,19 +46,15 @@ export default function ExpresslogistikPage() {
             <p className="eyebrow">Expresslogistik</p>
             <h1 id="express-hero-title">Wenn jede Minute zählt.</h1>
             <p className="express-hero__subheadline">
-              Zeitkritische Direkttransporte in Deutschland und Europa.
+              Zeitkritische Transporte Europaweit
             </p>
-            <p className="express-hero__intro">
-              Wir organisieren kurzfristig das passende Fahrzeug und bringen Ihre Sendung ohne unnötige Umwege direkt ans Ziel.
-            </p>
-            <Button href="/#transportanfrage">Expressanfrage starten</Button>
           </Container>
         </section>
 
         <Section className="express-section" aria-labelledby="express-need-title">
           <Container>
             <div className="express-section__heading">
-              <h2 id="express-need-title">Wenn ein Transport nicht warten kann.</h2>
+              <h2 id="express-need-title">Wann entstehen Express-Transporte?</h2>
               <p>
                 Expresslogistik kommt immer dann zum Einsatz, wenn Verzögerungen direkte Folgen für Produktion, Termine oder Kunden haben.
               </p>
