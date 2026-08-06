@@ -247,12 +247,9 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .express-section__heading h2 { margin-bottom: var(--space-3); }
 .express-section__heading p { max-width: 42rem; margin-bottom: 0; color: var(--color-text-muted); font-size: var(--text-lg); }
 .express-section__heading--compact { margin-bottom: 0; }
-.express-use-cases { display: grid; border-top: 1px solid var(--color-border); grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.express-use-case { min-height: 13rem; padding: var(--space-4) var(--space-4) 0 0; border-right: 1px solid var(--color-border); }
-.express-use-case + .express-use-case { padding-left: var(--space-4); }
-.express-use-case:last-child { padding-right: 0; border-right: 0; }
-.express-use-case h3 { max-width: 18ch; }
-.express-use-case p { max-width: 22rem; margin-bottom: 0; color: var(--color-text-muted); }
+.express-section__heading--need { max-width: none; }
+.express-section__heading--need h2 { max-width: none; }
+.express-section__heading--need p + p { margin-top: var(--space-2); }
 .express-checklist { display: grid; max-width: 62rem; margin: 0; padding: 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); grid-template-columns: repeat(2, minmax(0, 1fr)); list-style: none; }
 .express-checklist li { display: flex; min-height: 4.5rem; align-items: center; padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--color-border); color: var(--color-text-muted); font-weight: 600; }
 .express-checklist li::before { width: 0.5rem; height: 0.5rem; flex: 0 0 auto; margin-right: var(--space-2); border-radius: 50%; background: var(--color-primary); content: ""; }
@@ -324,9 +321,6 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
   .site-navigation__request:hover { color: var(--color-background) !important; background: var(--color-primary-dark); }
   .company-layout { grid-template-columns: 1fr; }
   .company-layout { gap: var(--space-3); }
-  .express-use-cases { grid-template-columns: 1fr; }
-  .express-use-case, .express-use-case + .express-use-case { min-height: 0; padding: var(--space-3) 0; border-right: 0; border-bottom: 1px solid var(--color-border); }
-  .express-use-case:last-child { border-bottom: 0; }
   .express-checklist { grid-template-columns: 1fr; }
   .express-checklist li, .express-checklist li:nth-last-child(-n + 2), .express-checklist li:nth-child(odd) { border-right: 0; border-bottom: 1px solid var(--color-border); }
   .express-checklist li:last-child { border-bottom: 0; }

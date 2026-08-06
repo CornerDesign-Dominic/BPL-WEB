@@ -11,21 +11,6 @@ export const metadata: Metadata = {
     "Zeitkritische Express- und Direkttransporte in Deutschland und Europa – kurzfristig organisiert durch Brennpunkt Logistik.",
 };
 
-const useCases = [
-  {
-    title: "Produktionsausfall",
-    text: "Ein Bauteil oder Material fehlt und die Produktion steht oder droht stillzustehen.",
-  },
-  {
-    title: "Kurzfristige Bestellung",
-    text: "Eine dringend benötigte Ware muss schneller als über den regulären Transportweg geliefert werden.",
-  },
-  {
-    title: "Verpasste oder kritische Lieferung",
-    text: "Eine Sendung wurde verspätet, falsch disponiert oder muss einen verbindlichen Termin noch erreichen.",
-  },
-];
-
 const processSteps = [
   "Anfrage und Anforderungen kurzfristig prüfen",
   "passendes Fahrzeug organisieren",
@@ -53,19 +38,14 @@ export default function ExpresslogistikPage() {
 
         <Section className="express-section" aria-labelledby="express-need-title">
           <Container>
-            <div className="express-section__heading">
+            <div className="express-section__heading express-section__heading--need">
               <h2 id="express-need-title">Wann entstehen Express-Transporte?</h2>
               <p>
-                Expresslogistik kommt immer dann zum Einsatz, wenn Verzögerungen direkte Folgen für Produktion, Termine oder Kunden haben.
+                Gründe für eine zügige Umsetzung können verschieden sein: Ein fehlendes Bauteil kann die Produktion aufhalten, eine dringend benötigte Ware muss kurzfristig verfügbar sein oder eine kritische Lieferung soll ihren verbindlichen Termin noch erreichen.
               </p>
-            </div>
-            <div className="express-use-cases">
-              {useCases.map(({ title, text }) => (
-                <article className="express-use-case" key={title}>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </article>
-              ))}
+              <p>
+                All diese Situationen haben eines gemeinsam: Sie erfordern unverzügliches Handeln. Wir prüfen die Anfrage kurzfristig, organisieren das passende Fahrzeug und koordinieren die direkte Fahrt, damit Ihre Sendung zügig und zuverlässig ihr Ziel erreicht.
+              </p>
             </div>
           </Container>
         </Section>
