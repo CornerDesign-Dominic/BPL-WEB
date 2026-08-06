@@ -27,25 +27,11 @@ export default function UeberUnsPage() {
 
         <Section className="about-section" aria-labelledby="about-approach-title">
           <Container>
-            <div className="section-heading">
+            <div className="section-heading about-section__heading--compact">
               <h2 id="about-approach-title">Wofür wir stehen</h2>
               <p>
                 Transporte sind für uns mehr als die Fahrt von A nach B. Entscheidend sind klare Absprachen, eine verlässliche Organisation und ein persönlicher Ansprechpartner, der vom ersten Kontakt bis zur erfolgreichen Zustellung erreichbar bleibt.
               </p>
-            </div>
-            <div className="about-values">
-              <article>
-                <h3>Persönliche Betreuung</h3>
-                <p>Wir hören zu, klären die Anforderungen und begleiten Ihre Anfrage vom ersten Gespräch bis zur Zustellung.</p>
-              </article>
-              <article>
-                <h3>Kurze Entscheidungswege</h3>
-                <p>Wenn Zeit entscheidend ist, schaffen direkte Abstimmungen die Grundlage für schnelle und klare Entscheidungen.</p>
-              </article>
-              <article>
-                <h3>Flexible Organisation</h3>
-                <p>Jede Sendung bringt eigene Voraussetzungen mit. Wir richten die Transportlösung an Ihrem tatsächlichen Bedarf aus.</p>
-              </article>
             </div>
           </Container>
         </Section>
@@ -54,7 +40,7 @@ export default function UeberUnsPage() {
           <Container className="about-work">
             <div>
               <p className="eyebrow">Zusammenarbeit</p>
-              <h2 id="about-work-title">Klar organisiert. Verlässlich begleitet.</h2>
+              <h2 id="about-work-title">Offen im Austausch. Stark in der Zusammenarbeit.</h2>
             </div>
             <div className="about-work__text">
               <p>
@@ -117,7 +103,7 @@ export default function UeberUnsPage() {
               <h2 id="about-cta-title">Lernen Sie uns kennen.</h2>
               <p>Sie haben eine Transportanfrage oder möchten mehr über unsere Arbeitsweise erfahren?</p>
             </div>
-            <Button href="/#transportanfrage">Transportanfrage starten</Button>
+            <Button href="/kontakt">Zur Kontaktseite</Button>
           </Container>
         </section>
       </main>
