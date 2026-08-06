@@ -70,6 +70,7 @@ function validateStep(step: number, data: TransportRequestData): FieldErrors {
     if (!data.heightCm || Number(data.heightCm) <= 0) errors.heightCm = "Bitte geben Sie die Höhe an.";
   }
   if (step === 4) {
+    if (!data.company.trim()) errors.company = "Bitte geben Sie den Firmennamen an.";
     if (!emailPattern.test(data.email)) errors.email = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
     if (!data.privacyAccepted) errors.privacyAccepted = "Bitte bestätigen Sie die Datenschutzhinweise und die AGB.";
   }

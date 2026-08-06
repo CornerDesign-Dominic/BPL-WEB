@@ -14,7 +14,7 @@ export function ContactStep({ data, errors, onChange }: ContactStepProps) {
       </div>
       <div className="request-form-grid request-form-grid--contact">
         <label>E-Mail-Adresse<input type="email" value={data.email} onChange={(event) => onChange("email", event.target.value)} autoComplete="email" aria-invalid={Boolean(errors.email)} /></label>
-        <label>Firmenname (optional)<input value={data.company} onChange={(event) => onChange("company", event.target.value)} autoComplete="organization" /></label>
+        <label>Firmenname<input required value={data.company} onChange={(event) => onChange("company", event.target.value)} autoComplete="organization" aria-invalid={Boolean(errors.company)} /></label>
         <label>Telefonnummer (optional)<input type="tel" value={data.phone} onChange={(event) => onChange("phone", event.target.value)} autoComplete="tel" /></label>
         <label>Ansprechpartner (optional)<input value={data.contactPerson} onChange={(event) => onChange("contactPerson", event.target.value)} autoComplete="name" /></label>
         <label className="request-form-grid__full">Nachricht (optional)<textarea value={data.message} onChange={(event) => onChange("message", event.target.value)} rows={3} /></label>
