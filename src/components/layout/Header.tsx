@@ -47,6 +47,13 @@ export function Header() {
           >
             Expresslogistik
           </a>
+          <a
+            href="/ueber-uns"
+            aria-current={pathname === "/ueber-uns" ? "page" : undefined}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Über uns
+          </a>
           <a href="/kontakt" onClick={() => setIsMenuOpen(false)}>
             Kontakt
           </a>
