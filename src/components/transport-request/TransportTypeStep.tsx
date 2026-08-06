@@ -10,9 +10,6 @@ export function TransportTypeStep({ data, onChange }: TransportTypeStepProps) {
     <div className="request-step">
       <fieldset className="request-fieldset">
         <legend>Fahrzeug wählen</legend>
-        <p className="request-step__intro">
-          Wählen Sie die passende Option für Ihre Anfrage.
-        </p>
         <div className="transport-type-grid" role="radiogroup">
           {transportTypeOptions.map((option) => {
             const isSelected = data.transportType === option.value;

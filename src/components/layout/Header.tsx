@@ -54,7 +54,7 @@ export function Header() {
           >
             Über uns
           </a>
-          <a href="/kontakt" onClick={() => setIsMenuOpen(false)}>
+          <a href="/kontakt" aria-current={pathname === "/kontakt" ? "page" : undefined} onClick={() => setIsMenuOpen(false)}>
             Kontakt
           </a>
           <a className="site-navigation__request" href={homeLink("#transportanfrage")} onClick={() => setIsMenuOpen(false)}>
