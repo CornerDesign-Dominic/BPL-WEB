@@ -71,12 +71,12 @@ export default function UeberUnsPage() {
           <Container>
             <div className="section-heading">
               <h2 id="about-guiding-title">Unser Leitbild</h2>
-              <p>Was uns bei der täglichen Zusammenarbeit mit unseren Kunden leitet.</p>
+              <p>Wir verstehen Logistik als persönliche Verantwortung. Deshalb handeln wir schnell, kommunizieren offen und bleiben vom ersten Kontakt bis zur erfolgreichen Zustellung verlässlich an der Seite unserer Kunden. Mit kurzen Entscheidungswegen, festen Ansprechpartnern und einem starken europäischen Netzwerk schaffen wir Lösungen, die Unternehmen auch unter Zeitdruck handlungsfähig halten. Unser Anspruch sind langfristige Partnerschaften, die auf Vertrauen, Transparenz und gegenseitiger Verlässlichkeit beruhen.</p>
             </div>
             <div className="about-guiding">
               <article>
                 <h3>Unsere Mission</h3>
-                <p>Wir sind für unsere Kunden da, um herausfordernde Transportanforderungen zu übernehmen und ihnen Zeit für ihr Kerngeschäft zu schaffen.</p>
+                <p>Wir finden für jede Transportanforderung schnell eine verlässliche Lösung. Durch transparente Kommunikation schaffen wir Vertrauen und mit Verantwortung langfristige Partnerschaften.</p>
               </article>
               <article>
                 <h3>Unsere Vision</h3>
