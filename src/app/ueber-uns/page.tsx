@@ -30,7 +30,7 @@ export default function UeberUnsPage() {
             <div className="section-heading">
               <h2 id="about-approach-title">Wofür wir stehen</h2>
               <p>
-                Transporte sind für uns mehr als die Fahrt von A nach B. Entscheidend sind klare Absprachen, verlässliche Organisation und ein Ansprechpartner, der erreichbar bleibt.
+                Transporte sind für uns mehr als die Fahrt von A nach B. Entscheidend sind klare Absprachen, eine verlässliche Organisation und ein persönlicher Ansprechpartner, der vom ersten Kontakt bis zur erfolgreichen Zustellung erreichbar bleibt.
               </p>
             </div>
             <div className="about-values">
@@ -58,21 +58,14 @@ export default function UeberUnsPage() {
             </div>
             <div className="about-work__text">
               <p>
-                Unser Anspruch ist es, Transporte zuverlässig zum Abschluss zu bringen – von der ersten Anfrage über die Disposition bis zur Ankunft am Ziel.
-              </p>
-              <p>
-                Dabei setzen wir auf partnerschaftliche Zusammenarbeit, nachvollziehbare Kommunikation und Lösungen, die im Alltag funktionieren.
+                Wir setzen auf klare Absprachen, direkte Kommunikation und verlässliche Ansprechpartner. Herausforderungen sprechen wir offen an und lösen sie gemeinsam – schnell, pragmatisch und partnerschaftlich.
               </p>
             </div>
           </Container>
         </Section>
 
-        <Section className="about-section" aria-labelledby="about-guiding-title">
+        <Section className="about-section" aria-label="Mission und Vision">
           <Container>
-            <div className="section-heading">
-              <h2 id="about-guiding-title">Unser Leitbild</h2>
-              <p>Wir verstehen Logistik als persönliche Verantwortung. Deshalb handeln wir schnell, kommunizieren offen und bleiben vom ersten Kontakt bis zur erfolgreichen Zustellung verlässlich an der Seite unserer Kunden. Mit kurzen Entscheidungswegen, festen Ansprechpartnern und einem starken europäischen Netzwerk schaffen wir Lösungen, die Unternehmen auch unter Zeitdruck handlungsfähig halten. Unser Anspruch sind langfristige Partnerschaften, die auf Vertrauen, Transparenz und gegenseitiger Verlässlichkeit beruhen.</p>
-            </div>
             <div className="about-guiding">
               <article>
                 <h3>Unsere Mission</h3>

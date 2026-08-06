@@ -279,9 +279,9 @@ h3 { margin-bottom: var(--space-2); font-size: 1.25rem; line-height: 1.22; }
 .about-work__text p { max-width: 42rem; margin-bottom: var(--space-3); color: var(--color-text-muted); font-size: var(--text-lg); }
 .about-work__text p:last-child { margin-bottom: 0; }
 .about-guiding { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
-.about-guiding article { min-height: 12rem; padding: var(--space-4); border: 1px solid var(--color-border); background: var(--color-form-surface); }
-.about-guiding h3 { margin-bottom: var(--space-2); }
-.about-guiding p { max-width: 30rem; margin-bottom: 0; color: var(--color-text-muted); }
+.about-guiding article { display: grid; min-height: 14rem; align-content: start; gap: var(--space-3); padding: clamp(var(--space-4), 4vw, var(--space-5)); border: 1px solid var(--color-border); border-top: 0.3125rem solid var(--color-primary); background: var(--color-form-surface); }
+.about-guiding h3 { margin: 0; color: var(--color-primary-dark); font-size: clamp(1.5rem, 3vw, 2rem); }
+.about-guiding p { max-width: 30rem; margin-bottom: 0; color: var(--color-text-muted); font-size: var(--text-lg); }
 .about-section--progress { background: var(--color-primary-soft); }
 .about-progress { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(var(--space-5), 8vw, var(--space-12)); }
 .about-progress h2 { margin-bottom: 0; }
